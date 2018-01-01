@@ -64,6 +64,15 @@ class Header extends Component {
    // document.body.classList.toggle('sidebar-hidden');
   }
 
+  menuClick(e){
+    e.preventDefault();
+    const x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+  }
   render() {
     const links = [
       {id: '1', linkTo: "#", text: "Link 1"},
@@ -75,40 +84,17 @@ class Header extends Component {
     ];
 
     return (
-      <header className="app-header navbar navbar-default">
-        <Container>
-          <NavbarBrand  />
-        
-        
-        <Nav className="ml-auto clearfix navbar-nav" navbar id='navigation'>
-        
-             {/*
-             <div className="navbar-header">
-              <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-                <span className="sr-only">Toggle navigation</span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-                <span className="icon-bar"></span>
-              </button>
-              
-             </div>
-             */}
-             <Collapse navbar isOpen={this.state.isOpen} >
-              <NavItem>
-                <NavLink href="https://www.nusakapital.com">HOME</NavLink>
-              </NavItem>
-             </Collapse>
-             
-        </Nav>  
-        {/**hamburger--collapse is-active**/}
-        <NavbarToggler className='hamburger ' aria-label="Menu" onClick={this.toggle.bind(this)} right >
-          <span className="hamburger-box">
-            <span className="hamburger-inner"></span>
-          </span>
-        </NavbarToggler>
-        
-       </Container>
-      </header>  
+      <header className="app-header topnavBackground">
+        <div className='container'>
+          <div className="topnav" id="myTopnav">
+                <a href="#logo" className="logo active">MAVOTOKEN</a>
+                <a href="#news">News</a>
+                <a href="#contact">Contact</a>
+                <a href="#about">About</a>
+                <a href="javascript:void(0);" style={{fontSize:'15px'}} className="icon" onClick={(e)=>this.menuClick(e)}>&#9776;</a>
+          </div>
+        </div>
+       </header>
       )
       {/*
       <header className="app-header navbar navbar-default sidebar-hidden">
