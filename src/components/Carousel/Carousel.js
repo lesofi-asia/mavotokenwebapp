@@ -10,7 +10,7 @@ class CarouselLeftArrow extends Component {
         className="carousel__arrow carousel__arrow--left"
         onClick={this.props.onClick}
       >
-        <span className="fa fa-2x fa-angle-left" />
+        <span className="fa fa-2x fa-angle-left" style={{color: '#daab85'}}  />
       </a>
     );
   }
@@ -24,7 +24,7 @@ class CarouselRightArrow extends Component {
         className="carousel__arrow carousel__arrow--right"
         onClick={this.props.onClick}
       >
-        <span className="fa fa-2x fa-angle-right" />
+        <span className="fa fa-2x fa-angle-right" style={{color: '#daab85'}} />
       </a>
     );
   }
@@ -49,9 +49,10 @@ class CarouselIndicator extends Component {
 
 class CarouselSlide extends Component {
   render() {
-    const style = { display: 'flex', justifyContent: 'center', alignItems: 'center', width: '300px', height: '300px'}
+    const style = { 
+      display: 'flex', justifyContent: 'center', 
+      alignItems: 'center', width: '350px', height: '350px'}
 
-    
     return (
       <li
         className={
@@ -64,7 +65,7 @@ class CarouselSlide extends Component {
             <div className='row'>
                 {this.props.slide.avatar?(
                     <p className="container" style={style}>
-                        <img src={this.props.slide.avatar} />
+                        <img src={this.props.slide.avatar} style={{height: '350px'}} />
                     </p>
                 ):null}
             </div>

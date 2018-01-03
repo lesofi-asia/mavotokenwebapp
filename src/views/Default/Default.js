@@ -1,5 +1,6 @@
 import React from 'react';
 import Carousel from '../../components/Carousel';
+import IPsList from './IPsList';
 
 // Data for carousel
 const carouselSlidesData = [
@@ -47,10 +48,20 @@ export class Default extends React.Component {
 
     render(){
           return (
-            <div className="container">
-                <div className='row' >
-                    <Carousel slides={carouselSlidesData} />
+            <div className="container" >
+                <div className='row'>
+                   <br />
+                </div>
+                <div className='row' style={{backgroundColor: '#202020'}}  >
+                    <Carousel slides={carouselSlidesData}  />
                 </div>  
+                <div className='row'>
+                   <br />
+                </div>
+                <div className='row'>
+                   <IPsList />
+                </div>
+
                     
             </div>
         )
