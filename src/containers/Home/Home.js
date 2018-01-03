@@ -20,7 +20,7 @@ const Home=()=>{
     return (
         <Router>
             <div className="app">
-                <Header />
+                <Header /> 
                 <div className="app-body">
                     <main className="main">
                       <Container fluid>
@@ -39,6 +39,7 @@ const Home=()=>{
                       </Container>
                     </main>
                 </div>
+                <Footer />
             </div> 
         </Router>    
     )

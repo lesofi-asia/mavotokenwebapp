@@ -4,7 +4,7 @@ class Footer extends Component {
   render() {
     return (
       <footer className="app-footer">
-        <a href="#">Nusa Kapital</a> &copy; 2017 Nusa Kapital Sdn. Bhd.
+        <a href="#">Footer</a> &copy; 2017 Nusa Kapital Sdn. Bhd.
       </footer>
     )
   }

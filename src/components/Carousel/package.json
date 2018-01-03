@@ -1,0 +1,6 @@
+{
+  "name": "Carousel",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./Carousel.js"
+}

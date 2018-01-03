@@ -13,6 +13,8 @@ import '../scss/style.scss'
 // Temp fix for reactstrap
 import '../scss/core/_dropdown-menu-right.scss'
 import 'hamburgers/dist/hamburgers.min.css'
+//import 'slick-carousel/slick/slick.scss'
+//import 'slick-carousel/slick/slick-theme.scss'
 
 // Containers
 import Home from './containers/Home';
