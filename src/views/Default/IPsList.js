@@ -192,7 +192,12 @@ export default class IPsList extends Component {
             >
               {tableData.map( (row, index) => (
                 <TableRow key={index} style={{borderColor: '#dbab83'}}>
-                  <TableRowColumn style={styles.ipAvatarTableCol}><img src={row.ipAvatar} style={{height: '50px'}} /></TableRowColumn>
+                  <TableRowColumn style={styles.ipAvatarTableCol}>
+                    <Avatar src={row.ipAvatar}  />
+                    {/*
+                    <img src={row.ipAvatar} style={{height: '50px'}} />
+                    */}
+                    </TableRowColumn>
                   <TableRowColumn style={styles.ipCodeTableCol}>{row.ipCode}</TableRowColumn>
                   <TableRowColumn style={styles.ipNameTableCol}>{row.name}</TableRowColumn>
                   <TableRowColumn style={{color: '#dbab83'}}>{row.price}</TableRowColumn>

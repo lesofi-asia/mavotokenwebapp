@@ -89,8 +89,8 @@ class Header extends Component {
           <div className="topnav" id="myTopnav">
                 <a href="#logo" className="logo active">MAVOTOKEN</a>
                 <a href="#news">News</a>
-                <a href="#contact">Contact</a>
-                <a href="#about">About</a>
+                <a href="#contact">Register</a>
+                <a href="#about">Login</a>
                 <a href="javascript:void(0);" style={{fontSize:'15px'}} className="icon" onClick={(e)=>this.menuClick(e)}>&#9776;</a>
           </div>
         </div>

@@ -51,7 +51,7 @@ class CarouselSlide extends Component {
   render() {
     const style = { 
       display: 'flex', justifyContent: 'center', 
-      alignItems: 'center', width: '350px', height: '350px'}
+      alignItems: 'center', width: '250px', height: '250px'}
 
     return (
       <li
@@ -65,7 +65,7 @@ class CarouselSlide extends Component {
             <div className='row'>
                 {this.props.slide.avatar?(
                     <p className="container" style={style}>
-                        <img src={this.props.slide.avatar} style={{height: '350px'}} />
+                        <img src={this.props.slide.avatar} style={{height: '250px'}} />
                     </p>
                 ):null}
             </div>
