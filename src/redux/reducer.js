@@ -1,7 +1,5 @@
 import { combineReducers } from 'redux';
-import imgCate from '../redux/imgCate/imgCateReducer';
 import { reducer as form } from 'redux-form';
-import dialogIframe from '../redux/dialogIframe/dialogIframeReducer';
-import projApollo from '../redux/projApollo/reducer';
+import login from '../redux/login/reducer';
 
-export default combineReducers({form,imgCate,dialogIframe,projApollo});
+export default combineReducers({form,login});

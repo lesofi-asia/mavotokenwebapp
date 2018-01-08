@@ -1,0 +1,109 @@
+.mvtfooter {
+    background-color: #14141B;
+	color: #dbab83;
+    padding-top: 10px;
+    flex: 0 0 auto;
+	-webkit-flex: 0 0 auto;
+	text-align: left;
+
+    .bottom-bar {
+        font-size: 13px;
+        line-height: 23px;
+        color: #fff;
+    }
+    
+
+    .footer-copyright {
+        background-color: #14141B;
+        padding-top: 1px;
+        padding-bottom: 1px;
+        text-align: center;
+        p {
+            margin: 10px;
+            color: #dbab83;
+        }
+    }
+
+    .row {
+        margin-bottom: 20px;
+    }
+
+    .navbar-brand {
+        margin-top: 45px;
+        height: 65px;
+    }
+
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+        line-height: 1.7;
+        font-size: 14px;
+        li {
+            font-size: 14px;
+        }
+    }
+
+    h5 {
+        font-size: 14px;
+        color: #dbab83;
+        font-weight: bold;
+        margin-top: 30px;
+    }
+
+    h2 a {
+        font-size: 50px;
+        text-align: center;
+        color: #dbab83;
+    }
+
+    a {
+        color: #dbab83;
+        text-decoration: none;
+        &:hover,&:focus {
+            text-decoration: none;
+            color: #f16534;
+        }
+    }
+
+    .social-networks {
+        text-align: center;
+        padding-top: 30px;
+        padding-bottom: 16px;
+        a {
+            font-size: 32px;
+            color: #f9f9f9;
+            padding: 10px;
+            transition: 0.2s;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+
+    .facebook:hover {
+        color: #0077e2;
+    }
+
+    .google:hover {
+        color: #ef1a1a ;
+    }
+
+    .twitter:hover {
+        color: #00aced;
+    }
+
+    .btn {
+        color: white;
+        background-color: #f16534;
+        border-radius: 20px;
+        border: none;
+        width: 150px;
+        display: block;
+        margin: 0 auto;
+        margin-top: 10px;
+        line-height: 25px;
+        text-align: center;
+    } 
+
+}
