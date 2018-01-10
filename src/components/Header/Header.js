@@ -73,7 +73,6 @@ class Header extends Component {
     }
   }
   render() {
-    
     return (
       <header className="app-header topnavBackground">
         <div className='container'>
@@ -85,7 +84,9 @@ class Header extends Component {
                 <Link to="/register">
                   Register
                 </Link>
-                <a href="#about">Login</a>
+                <Link to="/login">
+                  Login
+                </Link>
                 <a href="javascript:void(0);" style={{fontSize:'15px'}} className="icon" onClick={(e)=>this.menuClick(e)}>&#9776;</a>
           </div>
         </div>
