@@ -6,7 +6,9 @@ import Header from '../../components/Header/';
 import Footer from '../../components/Footer/';
 import Default from '../../views/Default';
 import Page1 from '../../views/Page1';
-import Page2 from '../../views/Page2';
+
+import Register from '../../views/Account/Register';
+import RegisterThankYou from '../../views/Account/RegisterThankYou';
 
 const PrivateRoute = ({component: Component, authed, ...rest}) => {  
     return (    
@@ -23,10 +25,11 @@ const Home=()=>{
                 <Header /> 
                 <div className="app-body">
                     <main className="main">
-                      <Container fluid>
+                      <Container>
                         <Switch>
+                            <Route path="/register" name="Register" component={Register}/>
+                            <Route path="/registerThankYou" name="Register Thank you" component={RegisterThankYou}/>
                             <Route path="/page1" name="Page 1" component={Page1}/>
-                            <Route path="/page2" name="Page 1" component={Page2}/>
                             <Route path="/" name="Default" component={Default}/>
                             <Route render={() => (
                                 <div className='container'>

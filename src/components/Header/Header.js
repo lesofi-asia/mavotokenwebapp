@@ -17,9 +17,8 @@ import React, { Component } from 'react';
 } from 'reactstrap';*/
 
 import { Container,NavItem,NavLink,Collapse,NavbarBrand,Nav,NavbarToggler,Navbar } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
-//import NavBrand from '../CustomNavBar/NavBrand';
-//import NavMenu from '../CustomNavBar/NavMenu';
 
 class Header extends Component {
 
@@ -74,52 +73,24 @@ class Header extends Component {
     }
   }
   render() {
-    const links = [
-      {id: '1', linkTo: "#", text: "Link 1"},
-      {id: '2', linkTo: "#", text: "Link 2"},
-      {id: '3', dropdown: true, text: "Dropdown", links: [
-        {id: '1',linkTo: "#", text: "Dropdown Link 1"},
-        {id: '2',linkTo: "#", text: "Dropdown Link 2", active: true}
-      ]}
-    ];
-
+    
     return (
       <header className="app-header topnavBackground">
         <div className='container'>
           <div className="topnav" id="myTopnav">
                 <a href="#logo" className="logo active">MAVOTOKEN</a>
-                <a href="#news">News</a>
-                <a href="#contact">Register</a>
+                <Link to="/page1">
+                  News
+                </Link>
+                <Link to="/register">
+                  Register
+                </Link>
                 <a href="#about">Login</a>
                 <a href="javascript:void(0);" style={{fontSize:'15px'}} className="icon" onClick={(e)=>this.menuClick(e)}>&#9776;</a>
           </div>
         </div>
        </header>
       )
-      {/*
-      <header className="app-header navbar navbar-default sidebar-hidden">
-        <NavbarBrand href="#"></NavbarBrand>
-
-        <Nav className="ml-auto clearfix" navbar>
-          <NavItem>
-            <NavLink href="https://www.nusakapital.com">HOME</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="https://www.nusakapital.com/about-us/">ABOUT US</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="https://www.nusakapital.com/discover/">CAMPAIGNS</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="https://www.nusakapital.com/get-funded/">GET FUNDED</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="https://www.nusakapital.com/how-it-works/">HOW IT WORKS</NavLink>
-          </NavItem>
-          {renderLogonComponent()}
-        </Nav>  
-      </header>
-      */}
     
   }
 }

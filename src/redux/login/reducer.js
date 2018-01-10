@@ -5,11 +5,37 @@ const initialState = {
     profile: null,
     jwtToken: null,
     error: null,
-    created: false,
+    accountCreated: false,
     routeLocation: null,
     emailVerify: false,
     emailVerifyError: null,
-    emailVerifyDone: false
+    emailVerifyDone: false,
+    accountLogins: []//For prototype development
+}
+
+const accouuntCreationSuccess=(state, action)=>{
+    let accountLogins = state.accountLogins;
+    accountLogins.push(action.accountLogin);
+    return {
+        ...state,
+        accountCreated: true,
+        error: null,
+        accountLogins: accountLogins
+    }
+}
+
+const accountCreationCompleted=(state)=>{
+    return {
+        ...state,
+        accountCreated: false
+    }
+}
+
+const accountCreationError=(state,action)=>{
+    return {
+        ...state,
+        error: action.error
+    }
 }
 
 const loginSuccess=(state, action)=>{
@@ -38,6 +64,9 @@ const logout=(state, action)=> {
 }
 
 export default reduce(initialState, {
+    [actionTypes.ACCOUNT_CREATION_SUCCESS]: accouuntCreationSuccess,
+    [actionTypes.ACCOUNT_CREATION_COMPLETED]: accountCreationCompleted,
+    [actionTypes.ACCOUNT_CREATION_ERROR]: accountCreationError,
     [actionTypes.LOGIN_SUCCESS]: loginSuccess,
     [actionTypes.LOGIN_ERROR]: loginError,
     [actionTypes.LOGOUT_SUCCESS]: logout
