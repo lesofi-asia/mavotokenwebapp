@@ -18,7 +18,7 @@ import React, { Component } from 'react';
 
 import { Container,NavItem,NavLink,Collapse,NavbarBrand,Nav,NavbarToggler,Navbar } from 'reactstrap';
 import { Link } from 'react-router-dom';
-
+import Avatar from 'material-ui/Avatar';
 
 class Header extends Component {
 
@@ -77,12 +77,12 @@ class Header extends Component {
       if (this.props.profile){
         return (
             <div className="dropdownMenu">
-                <button className="dropbtn">{this.props.profile.first_name}</button>
+                <button className="dropbtn"><Avatar src={'/img/avatars/stevejobs_avatar.jpg'} /></button>
                 <div className="dropdown-content">
-                  <Link to="/member" className="dropdownLink">
+                  <Link to="/member" className="profileLink">
                     Member Area
                   </Link>
-                  <a href="#" className="dropdownLink" onClick={this.logout.bind(this)}>Logout</a>
+                  <a href="#" className="profileLink" onClick={this.logout.bind(this)}>Logout</a>
                 </div>
             </div>
           )
@@ -94,15 +94,34 @@ class Header extends Component {
         <div className='container'>
           <div className="topnav" id="myTopnav">
                 <a href="#logo" className="logo active">MAVOTOKEN</a>
+
+                {this.props.profile?(
+                  <Link to="/portfolio">
+                    Portfolio
+                  </Link>
+                ):null}
+
+                {this.props.profile?(
+                  <Link to="/trade">
+                    Trade
+                  </Link>
+                ):null}
+
                 <Link to="/page1">
                   News
                 </Link>
-                <Link to="/register">
-                  Register
+
+                {!this.props.profile?(
+                  <Link to="/register">
+                    Register
                   </Link>
+                ):null}
+                {!this.props.profile?(
                   <Link to="/login">
                    Login
                   </Link>
+                ):null}
+                
                 {renderLogonComponent()}
                 <a href="javascript:void(0);" style={{fontSize:'15px'}} className="icon" onClick={(e)=>this.menuClick(e)}>&#9776;</a>
           </div>
