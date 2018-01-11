@@ -34,7 +34,7 @@ const Home=props=>{
     return (
         <Router>
             <div className="app">
-                <Header /> 
+                <Header logout={props.logout} profile={props.login.profile} /> 
                 <div className="app-body">
                     <main className="main">
                       <Container>

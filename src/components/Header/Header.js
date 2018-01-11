@@ -73,6 +73,22 @@ class Header extends Component {
     }
   }
   render() {
+    const renderLogonComponent = () => {
+      if (this.props.profile){
+        return (
+            <div className="dropdownMenu">
+                <button className="dropbtn">{this.props.profile.first_name}</button>
+                <div className="dropdown-content">
+                  <Link to="/member" className="dropdownLink">
+                    Member Area
+                  </Link>
+                  <a href="#" className="dropdownLink" onClick={this.logout.bind(this)}>Logout</a>
+                </div>
+            </div>
+          )
+      }
+    }
+
     return (
       <header className="app-header topnavBackground">
         <div className='container'>
@@ -83,10 +99,11 @@ class Header extends Component {
                 </Link>
                 <Link to="/register">
                   Register
-                </Link>
-                <Link to="/login">
-                  Login
-                </Link>
+                  </Link>
+                  <Link to="/login">
+                   Login
+                  </Link>
+                {renderLogonComponent()}
                 <a href="javascript:void(0);" style={{fontSize:'15px'}} className="icon" onClick={(e)=>this.menuClick(e)}>&#9776;</a>
           </div>
         </div>
