@@ -79,8 +79,8 @@ class Header extends Component {
             <div className="dropdownMenu">
                 <button className="dropbtn"><Avatar src={'/img/avatars/stevejobs_avatar.jpg'} /></button>
                 <div className="dropdown-content">
-                  <Link to="/member" className="profileLink">
-                    Member Area
+                  <Link to="/profile" className="profileLink">
+                    Profile
                   </Link>
                   <a href="#" className="profileLink" onClick={this.logout.bind(this)}>Logout</a>
                 </div>
