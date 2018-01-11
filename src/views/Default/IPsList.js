@@ -1,52 +1,45 @@
 import React, {Component} from 'react';
-import {
-  Table,
-  TableBody,
-  TableFooter,
-  TableHeader,
-  TableHeaderColumn,
-  TableRow,
-  TableRowColumn,
-} from 'material-ui/Table';
-import TextField from 'material-ui/TextField';
-//import Toggle from 'material-ui/Toggle';
+import EnhancedDataTable from '../../components/MaterialUi/DataTable/EnhancedDataTable';
 import Avatar from 'material-ui/Avatar';
 import TrendingUp from 'material-ui-icons/TrendingUp';
 import TrendingDown from 'material-ui-icons/TrendingDown';
 import TrendingFlat from 'material-ui-icons/TrendingFlat';
 
-const styles = {
-  propContainer: {
-    width: 200,
-    overflow: 'hidden',
-    margin: '20px auto 0',
-  },
-  propToggleHeader: {
-    margin: '20px auto 10px',
-  },
-  tableStyle: {
-    width: '100%',
-    backgroundColor: '#202020'
-  },
-  tableBodyStyle: {
-        overflow:'visible'
-  },
-  ipAvatarTableCol: {
-    color: '#dbab83',
-    width: '100px'
-  },
-  ipCodeTableCol: {
-    color: '#dbab83',
-    width: '100px'
-  },
-  ipNameTableCol: {
-    color: '#dbab83',
-    width: '300px'
+const ipTrending=(trending)=>{
+  switch(trending){
+      case 'up':
+          return <TrendingUp style={{color: '#dbab83'}} />;
+      case 'down':
+          return <TrendingDown style={{color: '#dbab83'}} />;    
+      default:
+          return <TrendingFlat style={{color: '#dbab83'}} />;
   }
-};
+}
+
+const customCol = (col,row)=>{
+  if (col.id==='ipAvatar'){
+    return (
+      <Avatar src={row[col.id]}  />
+    )
+  }
+  if (col.id==='trending'){
+    return ipTrending(row[col.id]);
+  }
+}
+
+const columnData = [
+  { id: 'ipAvatar', numeric: false, disablePadding: false, label: 'IP Avatar', customCol: true },
+  { id: 'ipCode', numeric: false, disablePadding: false, label: 'IP Code' },
+  { id: 'name', numeric: false, disablePadding: false, label: 'Name of IP' },
+  { id: 'price', numeric: true, disablePadding: false, label: 'Price' },
+  { id: 'amount', numeric: true, disablePadding: false, label: 'Amount' },
+  { id: 'vol', numeric: true, disablePadding: false, label: '24h Vol' },
+  { id: 'trending', numeric: false, disablePadding: false, label: 'Trending', customCol: true },
+];
 
 const tableData = [
   {
+    id: 1,
     ipAvatar: '/img/avatars/HH_ChanHouNam.jpg',
     ipCode: 'TDB',   
     name: 'Teddy Boy',
@@ -56,6 +49,7 @@ const tableData = [
     trending: 'up'
   },
   {
+    id: 2,
     ipAvatar: '/img/avatars/DS_DingYao.jpg',
     ipCode: 'YNB',   
     name: 'Young & Beautiful',
@@ -65,6 +59,7 @@ const tableData = [
     trending: 'down'
   },
   {
+    id: 3,
     ipAvatar: '/img/avatars/3TT.jpg',
     ipCode: '3TT',   
     name: '3000 years of Time Travel',
@@ -74,6 +69,7 @@ const tableData = [
     trending: ''
   },
   {
+    id: 4,
     ipAvatar: '/img/avatars/ETE.jpg',
     ipCode: 'FSM',   
     name: 'Feng Shui Monsters',
@@ -83,6 +79,7 @@ const tableData = [
     trending: 'up'
   },
   {
+    id: 5,
     ipAvatar: '/img/avatars/HH_JiangTaiYang.jpg',
     ipCode: 'HHZ',   
     name: 'Hong Hing Zhai',
@@ -93,44 +90,68 @@ const tableData = [
   }
 ];
 
-const ipTrending=(trending)=>{
-    switch(trending){
-        case 'up':
-            return <TrendingUp style={{color: '#dbab83'}} />;
-        case 'down':
-            return <TrendingDown style={{color: '#dbab83'}} />;    
-        default:
-            return <TrendingFlat style={{color: '#dbab83'}} />;
-    }
-}
-
 export default class IPsList extends Component {
-    state = {
-      fixedHeader: true,
-      fixedFooter: true,
-      stripedRows: false,
-      showRowHover: false,
-      selectable: true,
-      multiSelectable: false,
-      enableSelectAll: false,
-      deselectOnClickaway: true,
-      showCheckboxes: true,
-      height: '300px',
+    constructor(props, context){
+      super(props, context);
+
+      this.state = {
+        order: 'asc',
+        orderBy: 'ipCode',
+        selected: [],
+        data: tableData.sort((a, b) => (a.ipCode < b.ipCode ? -1 : 1)),
+        page: 0,
+        rowsPerPage: 5,
+      };
+    }
+
+    handleRequestSort = (event, property) => {
+        const orderBy = property;
+        let order = 'desc';
+    
+        if (this.state.orderBy === property && this.state.order === 'desc') {
+          order = 'asc';
+        }
+    
+        const data =
+          order === 'desc'
+            ? this.state.data.sort((a, b) => (b[orderBy] < a[orderBy] ? -1 : 1))
+            : this.state.data.sort((a, b) => (a[orderBy] < b[orderBy] ? -1 : 1));
+    
+        this.setState({ data, order, orderBy });
+    };
+
+    handleSelectAllClick = (event, checked) => {
+        if (checked) {
+          this.setState({ selected: this.state.data.map(n => n.id) });
+          return;
+        }
+        this.setState({ selected: [] });
     };
   
-    handleToggle = (event, toggled) => {
-      this.setState({
-        [event.target.name]: toggled,
-      });
+    handleKeyDown = (event, id) => {
+        if (keycode(event) === 'space') {
+            this.handleClick(event, id);
+        }
+    };
+
+    handleChangePage = (event, page) => {
+        this.setState({ page });
     };
   
-    handleChange = (event) => {
-      this.setState({height: event.target.value});
+    handleChangeRowsPerPage = event => {
+        this.setState({ rowsPerPage: event.target.value });
     };
   
+    isSelected = id => this.state.selected.indexOf(id) !== -1;
+
+    handleClick = (event, id)=> {
+
+    }
+    
     render() {
+      const { data, order, orderBy, selected, rowsPerPage, page } = this.state;
+
       return (
-        <div>
           <div className='container' style={{backgroundColor: '#202020'}}>
             <div className='row'>
                 <div className="d-flex flex-row">
@@ -152,69 +173,27 @@ export default class IPsList extends Component {
                     </div>
                 </div>
             </div>
+            <div className='row'>
+              <EnhancedDataTable 
+                      title={'MAVO IP'}    
+                      selected={selected}
+                      order={order}
+                      orderBy={orderBy}
+                      rowsPerPage={rowsPerPage}
+                      page={page}
+                      data={data}
+                      columnData={columnData}
+                      handleSelectAllClick={this.handleSelectAllClick}  
+                      handleRequestSort={this.handleRequestSort}
+                      //isSelectedFunc={this.isSelected}
+                      handleClick={this.handleClick}
+                      handleKeyDown={this.handleKeyDown}
+                      handleChangePage={this.handleChangePage}
+                      handleChangeRowsPerPage={this.handleChangeRowsPerPage}
+                      customColFunc={customCol}
+                  />
+            </div>
           </div>  
-          <Table
-            height={this.state.height}
-            fixedHeader={this.state.fixedHeader}
-            fixedFooter={this.state.fixedFooter}
-            selectable={this.state.selectable}
-            multiSelectable={this.state.multiSelectable}
-            style={styles.tableStyle}
-            bodyStyle={styles.tableBodyStyle} 
-          >
-            <TableHeader
-              displaySelectAll={false}
-              adjustForCheckbox={false}
-              enableSelectAll={false}
-            >
-            { /*
-              <TableRow>
-                <TableHeaderColumn colSpan="6" tooltip="Super Header" style={{textAlign: 'center',color: '#dbab83',width: '100%'}}>
-                  MAVO IP EXCHANGE 
-                </TableHeaderColumn>
-              </TableRow>*/
-            }
-              <TableRow style={{borderColor: '#dbab83'}}>
-                <TableHeaderColumn tooltip="The IP Avatar" style={styles.ipAvatarTableCol}>IP Avatar</TableHeaderColumn>
-                <TableHeaderColumn tooltip="The IP Code" style={styles.ipCodeTableCol}>IP Code</TableHeaderColumn>
-                <TableHeaderColumn tooltip="The Name of IP" style={styles.ipNameTableCol}>Name of IP</TableHeaderColumn>
-                <TableHeaderColumn tooltip="The Price (MVT)" style={{color: '#dbab83'}}>Price (MVT)</TableHeaderColumn>
-                <TableHeaderColumn tooltip="The Amount (TDB)" style={{color: '#dbab83'}}>Amount (TDB)</TableHeaderColumn>
-                <TableHeaderColumn tooltip="The 24h Vol" style={{color: '#dbab83'}}>24h Vol</TableHeaderColumn>
-                <TableHeaderColumn tooltip="The Trending" style={{color: '#dbab83'}}>Trending</TableHeaderColumn>
-              </TableRow>
-            </TableHeader>
-            <TableBody
-              displayRowCheckbox={false}
-              deselectOnClickaway={this.state.deselectOnClickaway}
-              showRowHover={this.state.showRowHover}
-              stripedRows={this.state.stripedRows}
-            >
-              {tableData.map( (row, index) => (
-                <TableRow key={index} style={{borderColor: '#dbab83'}}>
-                  <TableRowColumn style={styles.ipAvatarTableCol}>
-                    <Avatar src={row.ipAvatar}  />
-                    {/*
-                    <img src={row.ipAvatar} style={{height: '50px'}} />
-                    */}
-                    </TableRowColumn>
-                  <TableRowColumn style={styles.ipCodeTableCol}>{row.ipCode}</TableRowColumn>
-                  <TableRowColumn style={styles.ipNameTableCol}>{row.name}</TableRowColumn>
-                  <TableRowColumn style={{color: '#dbab83'}}>{row.price}</TableRowColumn>
-                  <TableRowColumn style={{color: '#dbab83'}}>{row.amount}</TableRowColumn>
-                  <TableRowColumn style={{color: '#dbab83'}}>{row.vol}</TableRowColumn>
-                  <TableRowColumn style={{color: '#dbab83'}}>{ipTrending(row.trending)}</TableRowColumn>
-                </TableRow>
-                ))}
-            </TableBody>
-            <TableFooter
-              adjustForCheckbox={this.state.showCheckboxes}
-            >
-              
-            </TableFooter>
-          </Table>
-        </div>        
-          
       );
     }
   }

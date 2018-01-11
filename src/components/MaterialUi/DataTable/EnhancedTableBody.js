@@ -34,6 +34,14 @@ let EnhancedTableBody = props => {
              */}
               {
                   columnData.map(col=> {
+                      if (col.customCol){
+                        return (
+                            <TableCell 
+                              key={col.id} 
+                              padding={col.disablePadding?'none':'default'} 
+                              numeric={col.numeric}>{props.customColFunc(col,n)}</TableCell>
+                        )    
+                      }
                       return (
                           <TableCell 
                             key={col.id} 

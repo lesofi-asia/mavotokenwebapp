@@ -29,7 +29,7 @@ let EnhancedDataTable = props => {
     const { title,selected,order,orderBy,page,rowsPerPage,data,columnData,
         handleSelectAllClick,handleRequestSort,isSelectedFunc,handleClick,
         handleKeyDown,handleChangePage,handleChangeRowsPerPage,classes,
-        deleteOnClick
+        deleteOnClick,customColFunc
      } = props;
     
     return (
@@ -54,6 +54,7 @@ let EnhancedDataTable = props => {
                   rowsPerPage={rowsPerPage}
                   handleClick={handleClick}
                   handleKeyDown={handleKeyDown}
+                  customColFunc={customColFunc}
               />
               <TableFooter>
                 <TableRow>

@@ -1,5 +1,6 @@
 import React from 'react';
 import EnhancedDataTable from '../../components/MaterialUi/DataTable/EnhancedDataTable';
+import Button from 'material-ui/Button';
 
 let counter = 0;
 function createData(symbol,availableBalance,pendingDeposit,reserved,total) {
@@ -7,8 +8,21 @@ function createData(symbol,availableBalance,pendingDeposit,reserved,total) {
   return { id: counter,action: 'Action', symbol, availableBalance, pendingDeposit, reserved, total };
 }
 
+const displayActionCol=(col,row)=>{
+    return (
+        <div>
+            <Button raised color="primary" style={{fontSize: '20px',width: '20px'}} onClick={()=>alert(row.id)} >
+                +
+            </Button>
+            <Button raised color="accent" onClick={()=>alert(row.id)}>
+                -
+            </Button>
+        </div>     
+    )
+}
+
 const columnData = [
-  { id: 'action', numeric: false, disablePadding: false, label: '+' },
+  { id: 'action', numeric: false, disablePadding: false, label: 'Actions',customCol: true },
   { id: 'symbol', numeric: false, disablePadding: false, label: 'Symbol' },
   { id: 'availableBalance', numeric: true, disablePadding: false, label: 'Available Balance' },
   { id: 'pendingDeposit', numeric: true, disablePadding: false, label: 'Pending Deposit' },
@@ -119,6 +133,7 @@ class Portfolio extends React.Component {
                             handleKeyDown={this.handleKeyDown}
                             handleChangePage={this.handleChangePage}
                             handleChangeRowsPerPage={this.handleChangeRowsPerPage}
+                            customColFunc={displayActionCol}
                         />
                     </div>        
                 </div>       
