@@ -1,17 +1,17 @@
-import {orange500, blue500} from 'material-ui/styles/colors';
+//import {orange500, blue500} from 'material-ui/styles/colors';
 
 const styles = {
     errorStyle: {
-      color: orange500,
+      color: '#ffa500',
     },
     underlineStyle: {
-      borderColor: orange500,
+      borderColor: '#ffa500',
     },
     floatingLabelStyle: {
-      color: orange500
+      color: '#ffa500'
     },
     floatingLabelFocusStyle: {
-      color: orange500,
+      color: '#ffa500',
     },
     checkboxLabel: {
         width: '100%'

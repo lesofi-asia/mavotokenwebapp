@@ -59,7 +59,7 @@ export class Default extends React.Component {
                    <br />
                 </div>
                 <div className='row'>
-                   <IPsList />
+                   
                 </div>
 
                     

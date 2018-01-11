@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+//import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 import TextField from 'material-ui/TextField';
 import Divider from 'material-ui/Divider';
-import GoogleLogin from 'react-google-login';
+//import GoogleLogin from 'react-google-login';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import textFieldStyles from '../Styles/textFieldStyles';
@@ -91,7 +91,12 @@ class Login extends Component {
 
         return (
             <div className="container">
-                <ToolbarTitle text="Sign-In Your Account" /> 
+                <div className='row'>
+                    <br />
+                </div>
+                <div className='row'>
+                    <h2>Sign In Your Account</h2>
+                </div>    
                 {this.renderError()}
 
                 <div className='row'>
@@ -99,13 +104,15 @@ class Login extends Component {
                         <div className="p-2">
                             <TextField
                                 name="email"
-                                hintText="Email Address"
-                                floatingLabelText="Email Address"
-                                floatingLabelStyle={textFieldStyles.floatingLabelStyle}
-                                floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
-                                underlineStyle={textFieldStyles.underlineStyle}
+                                label="Email Address"
+                                //hintText="Email Address"
+                                //floatingLabelText="Email Address"
+                                //floatingLabelStyle={textFieldStyles.floatingLabelStyle}
+                                //floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
+                                //underlineStyle={textFieldStyles.underlineStyle}
                                 onChange={this.handleEmailChange.bind(this)}
-                                errorText={this.state.emailError}
+                                error={this.state.emailError?true:false}
+                                helperText={this.state.emailError}
                             />
                         </div>
                     </div>
@@ -116,13 +123,16 @@ class Login extends Component {
                         <TextField
                                 name="password"
                                 type="password"
-                                hintText="Password"
-                                floatingLabelText="Password"
-                                floatingLabelStyle={textFieldStyles.floatingLabelStyle}
-                                floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
-                                underlineStyle={textFieldStyles.underlineStyle}
+                                label="Password"
+                                //hintText="Password"
+                                //floatingLabelText="Password"
+                                //floatingLabelStyle={textFieldStyles.floatingLabelStyle}
+                                //floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
+                                //underlineStyle={textFieldStyles.underlineStyle}
                                 onChange={this.handlePasswordChange.bind(this)}
-                                errorText={this.state.passwordError}
+                                //errorText={this.state.passwordError}
+                                error={this.state.passwordError?true:false}
+                                helperText={this.state.passwordError}
                             />
                         </div>
                     </div>  

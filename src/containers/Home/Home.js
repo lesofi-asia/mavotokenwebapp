@@ -12,6 +12,7 @@ import Register from '../../views/Account/Register';
 import RegisterThankYou from '../../views/Account/RegisterThankYou';
 import Login from '../../views/Account/Login';
 import Profile from '../../views/Private/Profile';
+import Portfolio from '../../views/Private/Portfolio';
 
 const PrivateRoute = ({component: Component, authed, ...rest}) => {  
     return (    
@@ -44,6 +45,7 @@ const Home=props=>{
                             <Route path="/registerThankYou" name="Register Thank you" component={RegisterThankYou}/>
                             <Route path="/page1" name="Page 1" component={Page1}/>
                             <PrivateRoute authed={isLoggedIn(props)} path='/profile' component = {Profile} />
+                            <PrivateRoute authed={isLoggedIn(props)} path='/portfolio' component = {Portfolio} />
                             <Route path="/" name="Default" component={Default}/>
                             <Route render={() => (
                                 <div className='container'>

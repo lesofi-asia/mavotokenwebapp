@@ -1,48 +1,23 @@
 import React, {Component} from 'react';
-import {
-  Table,
+import Table,{
   TableBody,
-  TableFooter,
-  TableHeader,
-  TableHeaderColumn,
+  TableHead,
   TableRow,
-  TableRowColumn,
+  TableCell
 } from 'material-ui/Table';
-import TextField from 'material-ui/TextField';
-import Toggle from 'material-ui/Toggle';
-import TrendingUp from 'material-ui/svg-icons/action/trending-up';
-import TrendingDown from 'material-ui/svg-icons/action/trending-down';
-import TrendingFlat from 'material-ui/svg-icons/action/trending-flat';
+import Paper from 'material-ui/Paper';
+import { withStyles } from 'material-ui/styles';
 
-const styles = {
-  propContainer: {
-    width: 200,
-    overflow: 'hidden',
-    margin: '20px auto 0',
-  },
-  propToggleHeader: {
-    margin: '20px auto 10px',
-  },
-  tableStyle: {
-    width: '100%',
-    backgroundColor: '#202020'
-  },
-  tableBodyStyle: {
-        overflow:'visible'
-  },
-  dateTableCol: {
-    color: '#dbab83',
-    width: '33%'
-  },
-  ipAddrTableCol: {
-    color: '#dbab83',
-    width: '33%'
-  },
-  locationTableCol: {
-    color: '#dbab83',
-    width: '34%'
-  }
-};
+const styles = theme => ({
+    root: {
+        width: '100%',
+        marginTop: theme.spacing.unit * 3,
+        overflowX: 'auto'
+    },
+    table: {
+        minWidth: 700
+    }
+})
 
 const tableData = [
   {
@@ -62,7 +37,7 @@ const tableData = [
   }
 ];
 
-export default class LastLogin extends Component {
+class LastLogin extends Component {
     state = {
       fixedHeader: true,
       fixedFooter: true,
@@ -87,47 +62,30 @@ export default class LastLogin extends Component {
     };
   
     render() {
+      const { classes } = this.props;  
       return (
-          <Table
-            height={this.state.height}
-            fixedHeader={this.state.fixedHeader}
-            fixedFooter={this.state.fixedFooter}
-            selectable={this.state.selectable}
-            multiSelectable={this.state.multiSelectable}
-            style={styles.tableStyle}
-            bodyStyle={styles.tableBodyStyle} 
-          >
-            <TableHeader
-              displaySelectAll={false}
-              adjustForCheckbox={false}
-              enableSelectAll={false}
-            >
-              <TableRow style={{borderColor: '#dbab83'}}>
-                <TableHeaderColumn tooltip="Date" style={styles.dateTableCol}>Date</TableHeaderColumn>
-                <TableHeaderColumn tooltip="IP Address" style={styles.ipAddrTableCol}>IP Address</TableHeaderColumn>
-                <TableHeaderColumn tooltip="Location" style={styles.locationTableCol}>Location</TableHeaderColumn>
-              </TableRow>
-            </TableHeader>
-            <TableBody
-              displayRowCheckbox={false}
-              deselectOnClickaway={this.state.deselectOnClickaway}
-              showRowHover={this.state.showRowHover}
-              stripedRows={this.state.stripedRows}
-            >
-              {tableData.map( (row, index) => (
-                <TableRow key={index} style={{borderColor: '#dbab83'}}>
-                  <TableRowColumn style={styles.dateTableCol}>{row.loginDate}</TableRowColumn>
-                  <TableRowColumn style={styles.ipAddrTableCol}>{row.ipAddr}</TableRowColumn>
-                  <TableRowColumn style={styles.locationTableCol}>{row.location}</TableRowColumn>
-                </TableRow>
-                ))}
-            </TableBody>
-            <TableFooter
-              adjustForCheckbox={this.state.showCheckboxes}
-            >
-              
-            </TableFooter>
-          </Table>
-      );
+          <Paper className={classes.root}>
+               <Table className={classes.table}>
+                   <TableHead>
+                      <TableRow> 
+                       <TableCell>Date</TableCell>
+                       <TableCell>IP Address</TableCell>
+                       <TableCell>Location</TableCell>
+                      </TableRow> 
+                   </TableHead>    
+                   <TableBody>
+                    {tableData.map( (row, index) => (
+                        <TableRow key={index}>
+                            <TableCell>{row.loginDate}</TableCell>
+                            <TableCell>{row.ipAddr}</TableCell>
+                            <TableCell>{row.location}</TableCell>
+                        </TableRow>    
+                    ))}
+                   </TableBody>    
+               </Table>     
+          </Paper>    
+      )  
     }
   }
+
+  export default withStyles(styles)(LastLogin);

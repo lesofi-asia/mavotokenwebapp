@@ -1,5 +1,6 @@
 import React from 'react';
-import {Card, CardTitle} from 'material-ui/Card';
+import Card,{CardContent} from 'material-ui/Card';
+import Typography from 'material-ui/Typography';
 import CardBitcoinProfile from '../../components/CustomCards/CardBitcoinProfile';
 import CardAction from '../../components/CustomCards/CardAction';
 import LastLogin from './LastLogin';
@@ -33,7 +34,10 @@ const Profile=props=>{
             <div className='row'>
                  <div className='col-sm'>
                     <Card>
-                        <CardTitle title="Login Password & KYC" />  
+                        <CardContent>
+                             <Typography type='headline'>Login Password & KYC</Typography>
+                        </CardContent>     
+                         
                         <CardAction 
                             icon={'/img/avatars/change_pwd_icon.png'} 
                             title={'Change Password'}
@@ -50,7 +54,9 @@ const Profile=props=>{
                  </div>    
                  <div className='col-sm'>
                     <Card>
-                       <CardTitle title="Two Factor Authentication" />  
+                       <CardContent>
+                             <Typography type='headline'>Two Factor Authentication</Typography>
+                       </CardContent>    
                        <CardAction 
                             icon={'/img/avatars/2fa_sms_icon.png'} 
                             title={'SMS Authentication'}
@@ -72,7 +78,9 @@ const Profile=props=>{
             <div className='row'>
                  <div className='col-sm'>
                     <Card>
-                         <CardTitle title="API" />  
+                       <CardContent>
+                             <Typography type='headline'>API</Typography>
+                       </CardContent>    
                          <CardAction 
                             icon={'/img/avatars/api_icon.png'} 
                             title={'API Setting'}
@@ -88,8 +96,10 @@ const Profile=props=>{
              <div className='row'>
                  <div className='col-sm'>
                     <Card>
-                         <CardTitle title="Last Login" />  
-                         <LastLogin />
+                        <CardContent>
+                             <Typography type='headline'>Last Login</Typography>
+                        </CardContent>   
+                        <LastLogin />
                     </Card> 
                  </div>    
              </div>  

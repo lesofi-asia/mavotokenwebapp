@@ -9,11 +9,11 @@ import {
   TableRowColumn,
 } from 'material-ui/Table';
 import TextField from 'material-ui/TextField';
-import Toggle from 'material-ui/Toggle';
+//import Toggle from 'material-ui/Toggle';
 import Avatar from 'material-ui/Avatar';
-import TrendingUp from 'material-ui/svg-icons/action/trending-up';
-import TrendingDown from 'material-ui/svg-icons/action/trending-down';
-import TrendingFlat from 'material-ui/svg-icons/action/trending-flat';
+import TrendingUp from 'material-ui-icons/TrendingUp';
+import TrendingDown from 'material-ui-icons/TrendingDown';
+import TrendingFlat from 'material-ui-icons/TrendingFlat';
 
 const styles = {
   propContainer: {

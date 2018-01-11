@@ -21,14 +21,17 @@ import Home from './containers/Home';
 //Redux
 import createStore from './redux/createStore';
 //Material UI
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { MuiThemeProvider,createMuiTheme } from 'material-ui/styles';
+import {grey, amber, red} from 'material-ui/colors';
+
+const theme = createMuiTheme();
 
 const store = createStore();
 
 ReactDOM.render(
   <Provider store={store}>
      <BrowserRouter>
-       <MuiThemeProvider>
+       <MuiThemeProvider theme={theme}>
         <Home />
        </MuiThemeProvider> 
      </BrowserRouter>
