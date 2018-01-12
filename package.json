@@ -69,6 +69,7 @@
     "dev": "webpack -d --progress --watch --profile --json > compilation-stats.json --env.dev",
     "start": "webpack-dev-server --progress --colors --inline --env.dev",
     "build": "webpack -p --progress --env.prod",
+    "deploy": "npm run clean && npm run build && aws --profile mavotoken s3 cp build s3://www.mavotoken.com/prototype --recursive",
     "clean": "rimraf ./build"
   },
   "engines": {
