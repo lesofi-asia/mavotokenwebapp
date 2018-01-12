@@ -113,7 +113,7 @@ class Header extends Component {
                   </Link>
                 ):null}
 
-                <Link to="/page1">
+                <Link to="/news">
                   News
                 </Link>
 

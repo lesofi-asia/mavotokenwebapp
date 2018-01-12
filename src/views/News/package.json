@@ -1,6 +1,6 @@
 {
-  "name": "Page1",
+  "name": "News",
   "version": "1.0.0",
   "private": true,
-  "main": "./Page1.js"
+  "main": "./News.js"
 }

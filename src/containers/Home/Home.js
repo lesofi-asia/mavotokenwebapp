@@ -4,10 +4,9 @@ import {Link, Switch, Route, Redirect, BrowserRouter as Router } from 'react-rou
 import {Container} from 'reactstrap';
 import Header from '../../components/Header/';
 import Footer from '../../components/Footer/';
-import Default from '../../views/Default';
-import Page1 from '../../views/Page1';
-
 import * as actions from '../../redux/login/actions';
+import Default from '../../views/Default';
+import News from '../../views/News';
 import Register from '../../views/Account/Register';
 import RegisterThankYou from '../../views/Account/RegisterThankYou';
 import Login from '../../views/Account/Login';
@@ -43,7 +42,7 @@ const Home=props=>{
                             <Route path="/login" name="Login" component={Login}/> 
                             <Route path="/register" name="Register" component={Register}/>
                             <Route path="/registerThankYou" name="Register Thank you" component={RegisterThankYou}/>
-                            <Route path="/page1" name="Page 1" component={Page1}/>
+                            <Route path="/news" name="News" component={News}/>
                             <PrivateRoute authed={isLoggedIn(props)} path='/profile' component = {Profile} />
                             <PrivateRoute authed={isLoggedIn(props)} path='/portfolio' component = {Portfolio} />
                             <Route path="/" name="Default" component={Default}/>
