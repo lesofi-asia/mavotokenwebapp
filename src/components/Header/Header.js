@@ -93,7 +93,13 @@ class Header extends Component {
       <header className="app-header topnavBackground">
         <div className='container'>
           <div className="topnav" id="myTopnav">
-                <a href="#logo" className="logo active">MAVOTOKEN</a>
+                <Link to="/" className='logo active' >
+                  MAVOTOKEN
+                </Link>
+                
+                <Link to="/">
+                    Home
+                </Link>
 
                 {this.props.profile?(
                   <Link to="/portfolio">

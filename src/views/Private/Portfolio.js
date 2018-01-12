@@ -10,13 +10,10 @@ function createData(symbol,availableBalance,pendingDeposit,reserved,total) {
 
 const displayActionCol=(col,row)=>{
     return (
-        <div>
-            <Button raised color="primary" style={{fontSize: '20px',width: '20px'}} onClick={()=>alert(row.id)} >
-                +
-            </Button>
-            <Button raised color="accent" onClick={()=>alert(row.id)}>
-                -
-            </Button>
+        <div style={{width: '50px'}}>
+            <img src='/img/avatars/action_plus_icon.png' onClick={()=>alert(row.id)} style={{width: '20px'}} />
+            &nbsp;&nbsp;
+            <img src='/img/avatars/action_minus_icon.png' onClick={()=>alert(row.id)} style={{width: '20px'}} />
         </div>     
     )
 }

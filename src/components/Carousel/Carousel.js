@@ -146,7 +146,7 @@ class Carousel extends Component {
   render() {
     return (
       <div className="carouselCustom">
-        <div className='container-fluid'>
+        <div className='container'>
             <div className='row'>
                 <div className='col-sm-2'>
                    <CarouselLeftArrow onClick={e => this.goToPrevSlide(e)} />
@@ -168,7 +168,7 @@ class Carousel extends Component {
                 </div>        
             </div>
             <div className='row'>
-               <div className='col-sm-12'>
+               <div className='col-sm'>
                 <ul className="carousel__indicators">
                 {this.props.slides.map((slide, index) =>
                     <CarouselIndicator

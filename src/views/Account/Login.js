@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-//import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 import TextField from 'material-ui/TextField';
 import Divider from 'material-ui/Divider';
-//import GoogleLogin from 'react-google-login';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import textFieldStyles from '../Styles/textFieldStyles';
@@ -67,8 +65,12 @@ class Login extends Component {
       //console.log(error)
       if (error){
         return (
-          <div className="alert alert-danger" role="alert">
-            {error}
+          <div className='row'>  
+              <div className='col-sm'>
+                <div className="alert alert-danger" role="alert">
+                    {error}
+                </div>
+              </div>
           </div>
         )
       }
@@ -95,65 +97,68 @@ class Login extends Component {
                     <br />
                 </div>
                 <div className='row'>
-                    <h2>Sign In Your Account</h2>
+                    <div className='col-sm'>
+                        <h2>Sign In Your Account</h2>
+                    </div>
                 </div>    
                 {this.renderError()}
 
                 <div className='row'>
-                    <div className="d-flex flex-row">
-                        <div className="p-2">
-                            <TextField
-                                name="email"
-                                label="Email Address"
-                                //hintText="Email Address"
-                                //floatingLabelText="Email Address"
-                                //floatingLabelStyle={textFieldStyles.floatingLabelStyle}
-                                //floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
-                                //underlineStyle={textFieldStyles.underlineStyle}
-                                onChange={this.handleEmailChange.bind(this)}
-                                error={this.state.emailError?true:false}
-                                helperText={this.state.emailError}
-                            />
+                    <div className='col-sm'>
+                        <div className="d-flex flex-row">
+                            <div className="p-2">
+                                <TextField
+                                    name="email"
+                                    label="Email Address"
+                                    onChange={this.handleEmailChange.bind(this)}
+                                    error={this.state.emailError?true:false}
+                                    helperText={this.state.emailError}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
+
                 <div className='row'>    
-                    <div className="d-flex flex-row">
-                        <div className="p-2">
-                        <TextField
-                                name="password"
-                                type="password"
-                                label="Password"
-                                //hintText="Password"
-                                //floatingLabelText="Password"
-                                //floatingLabelStyle={textFieldStyles.floatingLabelStyle}
-                                //floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
-                                //underlineStyle={textFieldStyles.underlineStyle}
-                                onChange={this.handlePasswordChange.bind(this)}
-                                //errorText={this.state.passwordError}
-                                error={this.state.passwordError?true:false}
-                                helperText={this.state.passwordError}
-                            />
-                        </div>
-                    </div>  
+                    <div className='col-sm'>
+                        <div className="d-flex flex-row">
+                            <div className="p-2">
+                            <TextField
+                                    name="password"
+                                    type="password"
+                                    label="Password"
+                                    onChange={this.handlePasswordChange.bind(this)}
+                                    error={this.state.passwordError?true:false}
+                                    helperText={this.state.passwordError}
+                                />
+                            </div>
+                        </div>  
+                    </div>
                 </div>   
+
                 <div className='row'>
-                    <div className="d-flex flex-row">
-                      <div className="p-2">
-                          <button className="btn btn-primary btn-lg" type="submit" 
-                              onClick={this.handleLoginSubmit.bind(this)}>
-                              Login
-                          </button> 
-                      </div> 
+                    <div className='col-sm'>
+                        <div className="d-flex flex-row">
+                        <div className="p-2">
+                            <button className="btn btn-primary btn-lg" type="submit" 
+                                onClick={this.handleLoginSubmit.bind(this)}>
+                                Login
+                            </button> 
+                        </div> 
+                        </div>
                     </div>   
                 </div>
                 <div className='row'>
-                    <div className="d-flex p-2">----------Don't Have Account?---------</div>
+                    <div className='col-sm'>
+                        <div className="d-flex p-2">----------Don't Have Account?---------</div>
+                    </div>
                 </div>
                 <div className='row'>
-                    <div className="d-flex flex-row">
-                    <div className="p-2">
-                    <button type="button" className="btn btn-secondary btn-sm" onClick={this.signUpOnClick.bind(this)}>Sign Up</button>
+                    <div className='col-sm'>
+                        <div className="d-flex flex-row">
+                            <div className="p-2">
+                                <button type="button" className="btn btn-secondary btn-sm" onClick={this.signUpOnClick.bind(this)}>Sign Up</button>
+                            </div>
                         </div>
                     </div>
                </div>      

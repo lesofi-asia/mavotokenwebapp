@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+//import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 import TextField from 'material-ui/TextField';
 import CustomCheckboxField from '../../components/MaterialUi/CustomCheckboxField';
 import GoogleLogin from 'react-google-login';
@@ -133,8 +133,12 @@ class Register extends Component {
     displayError = login => {
         if (login.error){
             return (
-                <div className="alert alert-danger" role="alert">
-                 {login.error}
+                <div className='row'>
+                  <div className='col-sm'>
+                    <div className="alert alert-danger" role="alert">
+                    {login.error}
+                    </div>
+                   </div> 
                 </div>
             )
         }
@@ -150,96 +154,118 @@ class Register extends Component {
         }
         return (
             <div className="container">
-                <ToolbarTitle text="Create Your Account" /> 
+                <div className='row'>
+                    <br />
+                </div>
+                <div className='row'>
+                    <div className='col-sm'>
+                        <h2>Create Your Account</h2>
+                    </div>
+                </div> 
+                 
                 {this.displayError(this.props.login)}
                 
-                <div className="d-flex flex-row">
-                    <div className="p-2">
-                        <TextField
-                            name="firstName"
-                            hintText="First Name"
-                            floatingLabelText="First Name"
-                            floatingLabelStyle={textFieldStyles.floatingLabelStyle}
-                            floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
-                            underlineStyle={textFieldStyles.underlineStyle}
-                            onChange={this.handleFirstNameChange}
-                            errorText={this.state.firstNameError}
-                        />
+                <div className='row'>
+                    <div className='col-sm'>
+                        <div className="d-flex flex-row">
+                            <div className="p-2">
+                                <TextField
+                                    name="firstName"
+                                    label="First Name"
+                                    onChange={this.handleFirstNameChange}
+                                    error={this.state.firstNameError?true:false}
+                                    helperText={this.state.firstNameError}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className='row'>
+                    <div className='col-sm'>
+                        <div className="d-flex flex-row">
+                            <div className="p-2">
+                                <TextField
+                                    name="lastName"
+                                    label="Last Name"
+                                    onChange={this.handleLastNameChange}
+                                    error={this.state.lastNameError?true:false}
+                                    helperText={this.state.lastNameError}
+                                />
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div className="d-flex flex-row">
-                    <div className="p-2">
-                        <TextField
-                            name="lastName"
-                            hintText="Last Name"
-                            floatingLabelText="Last Name"
-                            floatingLabelStyle={textFieldStyles.floatingLabelStyle}
-                            floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
-                            underlineStyle={textFieldStyles.underlineStyle}
-                            onChange={this.handleLastNameChange}
-                            errorText={this.state.lastNameError}
-                        />
+                <div className='row'>
+                    <div className='col-sm'>
+                        <div className="d-flex flex-row">
+                            <div className="p-2">
+                                <TextField
+                                    name="email"
+                                    label="Email Address"
+                                    onChange={this.handleEmailChange}
+                                    error={this.state.emailError?true:false}
+                                    helperText={this.state.emailError}
+                                />
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div className="d-flex flex-row">
-                    <div className="p-2">
-                        <TextField
-                            name="email"
-                            hintText="Email Address"
-                            floatingLabelText="Email Address"
-                            floatingLabelStyle={textFieldStyles.floatingLabelStyle}
-                            floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
-                            underlineStyle={textFieldStyles.underlineStyle}
-                            onChange={this.handleEmailChange}
-                            errorText={this.state.emailError}
-                        />
+                <div className='row'>
+                    <div className='col-sm'>
+                        <div className="d-flex flex-row">
+                            <div className="p-2">
+                            <TextField
+                                    name="password"
+                                    type="password"
+                                    label="Password"
+                                    onChange={this.handlePasswordChange}
+                                    error={this.state.passwordError?true:false}
+                                    helperText={this.state.passwordError}
+                                />
+                            </div>
+                        </div>  
                     </div>
                 </div>
-                <div className="d-flex flex-row">
-                    <div className="p-2">
-                       <TextField
-                            name="password"
-                            type="password"
-                            hintText="Password"
-                            floatingLabelText="Password"
-                            floatingLabelStyle={textFieldStyles.floatingLabelStyle}
-                            floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
-                            underlineStyle={textFieldStyles.underlineStyle}
-                            onChange={this.handlePasswordChange}
-                            errorText={this.state.passwordError}
-                        />
+
+                <div className='row'>
+                    <div className='col-sm'>
+                        <div className="d-flex flex-row">
+                            <div className="p-2">
+                            <TextField
+                                    name="confirmPassword"
+                                    type="password"
+                                    label="Confirm Password"
+                                    onChange={this.handleConfirmPasswordChange}
+                                    error={this.state.confirmPasswordError?true:false}
+                                    helperText={this.state.confirmPasswordError}
+                                />
+                            </div>
+                        </div>   
                     </div>
-                </div>  
-                <div className="d-flex flex-row">
-                    <div className="p-2">
-                       <TextField
-                            name="confirmPassword"
-                            type="password"
-                            hintText="Confirm Password"
-                            floatingLabelText="Confirm Password"
-                            floatingLabelStyle={textFieldStyles.floatingLabelStyle}
-                            floatingLabelFocusStyle={textFieldStyles.floatingLabelFocusStyle}
-                            underlineStyle={textFieldStyles.underlineStyle}
-                            onChange={this.handleConfirmPasswordChange}
-                            errorText={this.state.confirmPasswordError}
-                        />
-                    </div>
-                </div>    
+                </div> 
                 
-                <div className="d-flex flex-row">
-                    <div className="p-2">
-                        <input type="checkbox" onClick={(e)=> this.checkBoxTnCOnClick(e)}  />
-                        {checkboxLabel}
-                     </div>
+                <div className='row'>
+                    <div className='col-sm'>
+                        <div className="d-flex flex-row">
+                            <div className="p-2">
+                                <input type="checkbox" onClick={(e)=> this.checkBoxTnCOnClick(e)}  />
+                                {checkboxLabel}
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+
+                <div className='row'> 
+                    <div className='col-sm'>
+                        <div className="d-flex flex-row">
+                            <div className="p-2">
+                                    {this.renderSubmitButton()}
+                            </div> 
+                        </div> 
+                    </div>
                 </div>  
-                 
-                <div className="d-flex flex-row">
-                   <div className="p-2">
-                        {this.renderSubmitButton()}
-                   </div> 
-                </div>   
             </div>    
         )
     }
