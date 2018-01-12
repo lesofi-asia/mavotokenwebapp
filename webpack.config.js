@@ -21,7 +21,7 @@ module.exports = (env = {}) => {
     output: {
       path: BUILD_DIR,
       filename: '[name].bundle.js',
-      publicPath: '/'
+      publicPath: env.prod?'':'/'
     },
     // watch: true,
     devtool: env.prod ? 'source-map' : 'cheap-module-eval-source-map',
