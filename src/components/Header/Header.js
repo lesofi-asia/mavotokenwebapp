@@ -107,12 +107,6 @@ class Header extends Component {
                   </Link>
                 ):null}
 
-                {this.props.profile?(
-                  <Link to="/trade">
-                    Trade
-                  </Link>
-                ):null}
-
                 <Link to="/news">
                   News
                 </Link>

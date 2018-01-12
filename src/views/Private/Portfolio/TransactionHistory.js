@@ -1,25 +1,14 @@
 import React from 'react';
-import EnhancedDataTable from '../../components/MaterialUi/DataTable/EnhancedDataTable';
+import EnhancedDataTable from '../../../components/MaterialUi/DataTable/EnhancedDataTable';
 import Button from 'material-ui/Button';
 
 let counter = 0;
 function createData(symbol,availableBalance,pendingDeposit,reserved,total) {
   counter += 1;
-  return { id: counter,action: 'Action', symbol, availableBalance, pendingDeposit, reserved, total };
-}
-
-const displayActionCol=(col,row)=>{
-    return (
-        <div style={{width: '50px'}}>
-            <img src='/img/avatars/action_plus_icon.png' onClick={()=>alert(row.id)} style={{width: '20px'}} />
-            &nbsp;&nbsp;
-            <img src='/img/avatars/action_minus_icon.png' onClick={()=>alert(row.id)} style={{width: '20px'}} />
-        </div>     
-    )
+  return { id: counter, symbol, availableBalance, pendingDeposit, reserved, total };
 }
 
 const columnData = [
-  { id: 'action', numeric: false, disablePadding: false, label: 'Actions',customCol: true },
   { id: 'symbol', numeric: false, disablePadding: false, label: 'Symbol' },
   { id: 'availableBalance', numeric: true, disablePadding: false, label: 'Available Balance' },
   { id: 'pendingDeposit', numeric: true, disablePadding: false, label: 'Pending Deposit' },
@@ -27,7 +16,7 @@ const columnData = [
   { id: 'total', numeric: true, disablePadding: false, label: 'Total' },
 ];
 
-class Portfolio extends React.Component {
+class TransactionHistory extends React.Component {
     constructor(props, context){
         super(props, context);
 
@@ -103,40 +92,25 @@ class Portfolio extends React.Component {
         const { data, order, orderBy, selected, rowsPerPage, page } = this.state;
 
         return (
-            <div className='container'>
-                <div className='row'>
-                    <br/>
-                </div>    
-                <div className='row'>
-                    <div className='col-sm'>
-                        <h2>Portfolio</h2>
-                    </div>    
-                </div> 
-                <div className='row'>
-                    <div className='col-sm'>
-                        <EnhancedDataTable 
-                            title={'Account Balances'}
-                            selected={selected}
-                            order={order}
-                            orderBy={orderBy}
-                            rowsPerPage={rowsPerPage}
-                            page={page}
-                            data={data}
-                            columnData={columnData}
-                            handleSelectAllClick={this.handleSelectAllClick}  
-                            handleRequestSort={this.handleRequestSort}
-                            //isSelectedFunc={this.isSelected}
-                            handleClick={this.handleClick}
-                            handleKeyDown={this.handleKeyDown}
-                            handleChangePage={this.handleChangePage}
-                            handleChangeRowsPerPage={this.handleChangeRowsPerPage}
-                            customColFunc={displayActionCol}
-                        />
-                    </div>        
-                </div>       
-            </div>    
+            <EnhancedDataTable 
+                    title={'Transaction History'}
+                    selected={selected}
+                    order={order}
+                    orderBy={orderBy}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    data={data}
+                    columnData={columnData}
+                    handleSelectAllClick={this.handleSelectAllClick}  
+                    handleRequestSort={this.handleRequestSort}
+                    //isSelectedFunc={this.isSelected}
+                    handleClick={this.handleClick}
+                    handleKeyDown={this.handleKeyDown}
+                    handleChangePage={this.handleChangePage}
+                    handleChangeRowsPerPage={this.handleChangeRowsPerPage}
+                />  
         )
     }
 }
 
-export default Portfolio;
+export default TransactionHistory;
