@@ -4,6 +4,11 @@ import Avatar from 'material-ui/Avatar';
 import TrendingUp from 'material-ui-icons/TrendingUp';
 import TrendingDown from 'material-ui-icons/TrendingDown';
 import TrendingFlat from 'material-ui-icons/TrendingFlat';
+import ipAvatarThreeT from '../ImageAssets/ipAvatar/3TT.jpg';
+import ipAvatarDsDingYao from '../ImageAssets/ipAvatar/DS_DingYao.jpg';
+import ipAvatarEte from '../ImageAssets/ipAvatar/ETE.jpg';
+import ipAvatarHhChanHouNam from '../ImageAssets/ipAvatar/HH_ChanHouNam.jpg';
+import ipAvatarHhJiangTaiYang from '../ImageAssets/ipAvatar/HH_JiangTaiYang.jpg';
 
 const ipTrending=(trending)=>{
   switch(trending){
@@ -16,10 +21,27 @@ const ipTrending=(trending)=>{
   }
 }
 
+const getAvatarSrc=(ipCode)=>{
+  switch(ipCode){
+    case 'TDB':
+      return ipAvatarHhChanHouNam;
+    case 'YNB': 
+      return ipAvatarDsDingYao; 
+    case '3TT':
+      return ipAvatarThreeT;
+    case 'FSM':
+      return ipAvatarEte;   
+    case 'HHZ':
+      return ipAvatarHhJiangTaiYang;     
+    default: 
+      return null;   
+  }
+}
+
 const customCol = (col,row)=>{
   if (col.id==='ipAvatar'){
     return (
-      <Avatar src={row[col.id]}  />
+      <Avatar src={getAvatarSrc(row.ipCode)}  />
     )
   }
   if (col.id==='trending'){

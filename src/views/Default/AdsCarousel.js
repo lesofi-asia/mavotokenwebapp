@@ -3,6 +3,7 @@ import ItemsCarousel from 'react-items-carousel';
 import range from 'lodash/range';
 import Card,{CardContent} from 'material-ui/Card';
 import CardAds from '../../components/CustomCards/CardAds';
+import demoImage from '../ImageAssets/ipAvatar/HH_ChanHouNam.jpg';
 
 export default class AdsCarousel extends React.Component {
     
@@ -10,7 +11,7 @@ export default class AdsCarousel extends React.Component {
       <div key={i} style={{ height: '120px' }}>
                 <Card>
                    <CardAds 
-                     ipAvatar={'/img/avatars/HH_ChanHouNam.jpg'}
+                     ipAvatar={demoImage}
                      ipCode={'TDB'}
                      ipName={'Teddy Boy'}
                     />  

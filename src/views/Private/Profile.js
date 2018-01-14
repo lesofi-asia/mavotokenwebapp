@@ -4,6 +4,12 @@ import Typography from 'material-ui/Typography';
 import CardBitcoinProfile from '../../components/CustomCards/CardBitcoinProfile';
 import CardAction from '../../components/CustomCards/CardAction';
 import LastLogin from './LastLogin';
+import profileAvatar from '../ImageAssets/stevejobs_avatar.jpg';
+import action2FAGoogleAuthImage from '../ImageAssets/actions/2fa_google_auth_icon.png';
+import action2FASMSImage from '../ImageAssets/actions/2fa_sms_icon.png';
+import actionAPIImage from '../ImageAssets/actions/api_icon.png';
+import actionChangePwdImage from '../ImageAssets/actions/change_pwd_icon.png';
+import actionKycImage from '../ImageAssets/actions/kyc_icon.png';
 
 const Profile=props=>{
     return (
@@ -20,7 +26,7 @@ const Profile=props=>{
                <div className='col-sm'>
                  <Card>
                    <CardBitcoinProfile 
-                     icon={'/img/avatars/stevejobs_avatar.jpg'}
+                     icon={profileAvatar}
                      profileName={'Steve Jobs'}
                      email={'steve@mavotoken.com'}
                      bitcoinValue={'1000BTC'}
@@ -39,13 +45,13 @@ const Profile=props=>{
                         </CardContent>     
                          
                         <CardAction 
-                            icon={'/img/avatars/change_pwd_icon.png'} 
+                            icon={actionChangePwdImage} 
                             title={'Change Password'}
                             subtitle={'To change login password to access this system.'}
                             buttonText={'Change'}
                             />
                         <CardAction 
-                            icon={'/img/avatars/kyc_icon.png'} 
+                            icon={actionKycImage} 
                             title={'Identity Authentication'}
                             subtitle={'To increase withdrawal limit.'}
                             buttonText={'Verify'}
@@ -58,13 +64,13 @@ const Profile=props=>{
                              <Typography type='headline'>Two Factor Authentication</Typography>
                        </CardContent>    
                        <CardAction 
-                            icon={'/img/avatars/2fa_sms_icon.png'} 
+                            icon={action2FASMSImage} 
                             title={'SMS Authentication'}
                             subtitle={'Used for withdrawals and security modifications.'}
                             buttonText={'Enable'}
                             />
                        <CardAction 
-                            icon={'/img/avatars/2fa_google_auth_icon.png'} 
+                            icon={action2FAGoogleAuthImage} 
                             title={'Google Authentication'}
                             subtitle={'Used for withdrawals and security modifications.'}
                             buttonText={'Enable'}
@@ -82,7 +88,7 @@ const Profile=props=>{
                              <Typography type='headline'>API</Typography>
                        </CardContent>    
                          <CardAction 
-                            icon={'/img/avatars/api_icon.png'} 
+                            icon={actionAPIImage} 
                             title={'API Setting'}
                             subtitle={'Use API to get more access and real time market.'}
                             buttonText={'Enable'}

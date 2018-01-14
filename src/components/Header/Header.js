@@ -19,6 +19,7 @@ import React, { Component } from 'react';
 import { Container,NavItem,NavLink,Collapse,NavbarBrand,Nav,NavbarToggler,Navbar } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Avatar from 'material-ui/Avatar';
+import defaultProfilePhoto from '../../views/ImageAssets/stevejobs_avatar.jpg'
 
 class Header extends Component {
 
@@ -77,7 +78,7 @@ class Header extends Component {
       if (this.props.profile){
         return (
             <div className="dropdownMenu">
-                <button className="dropbtn"><Avatar src={'/img/avatars/stevejobs_avatar.jpg'} /></button>
+                <button className="dropbtn"><Avatar src={defaultProfilePhoto} /></button>
                 <div className="dropdown-content">
                   <Link to="/profile" className="profileLink">
                     Profile

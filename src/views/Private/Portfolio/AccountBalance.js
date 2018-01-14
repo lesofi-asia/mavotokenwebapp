@@ -1,6 +1,9 @@
 import React from 'react';
 import EnhancedDataTable from '../../../components/MaterialUi/DataTable/EnhancedDataTable';
 import Button from 'material-ui/Button';
+import actionPlusIcon from '../../ImageAssets/actions/action_plus_icon.png';
+import actionMinusIcon from '../../ImageAssets/actions/action_minus_icon.png';
+
 
 let counter = 0;
 function createData(symbol,availableBalance,pendingDeposit,reserved,total) {
@@ -11,9 +14,9 @@ function createData(symbol,availableBalance,pendingDeposit,reserved,total) {
 const displayActionCol=(col,row)=>{
     return (
         <div style={{width: '50px'}}>
-            <img src='/img/avatars/action_plus_icon.png' onClick={()=>alert(row.id)} style={{width: '20px'}} />
+            <img src={actionPlusIcon} onClick={()=>alert(row.id)} style={{width: '20px'}} />
             &nbsp;&nbsp;
-            <img src='/img/avatars/action_minus_icon.png' onClick={()=>alert(row.id)} style={{width: '20px'}} />
+            <img src={actionMinusIcon} onClick={()=>alert(row.id)} style={{width: '20px'}} />
         </div>     
     )
 }
