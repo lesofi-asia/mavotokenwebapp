@@ -80,7 +80,7 @@ class Header extends Component {
             <div className="dropdownMenu">
                 <button className="dropbtn"><Avatar src={defaultProfilePhoto} /></button>
                 <div className="dropdown-content">
-                  <Link to="/profile" className="profileLink">
+                  <Link to="/prototype/profile" className="profileLink">
                     Profile
                   </Link>
                   <a href="#" className="profileLink" onClick={this.logout.bind(this)}>Logout</a>
@@ -94,31 +94,31 @@ class Header extends Component {
       <header className="app-header topnavBackground">
         <div className='container'>
           <div className="topnav" id="myTopnav">
-                <Link to="/" className='logo active' >
+                <Link to="/prototype/" className='logo active' >
                   MAVOTOKEN
                 </Link>
                 
-                <Link to="/">
+                <Link to="/prototype/">
                     Home
                 </Link>
 
                 {this.props.profile?(
-                  <Link to="/portfolio">
+                  <Link to="/prototype/portfolio">
                     Portfolio
                   </Link>
                 ):null}
 
-                <Link to="/news">
+                <Link to="/prototype/news">
                   News
                 </Link>
 
                 {!this.props.profile?(
-                  <Link to="/register">
+                  <Link to="/prototype/register">
                     Register
                   </Link>
                 ):null}
                 {!this.props.profile?(
-                  <Link to="/login">
+                  <Link to="/prototype/login">
                    Login
                   </Link>
                 ):null}

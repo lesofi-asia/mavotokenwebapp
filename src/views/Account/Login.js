@@ -81,7 +81,7 @@ class Login extends Component {
         const { login } = this.props;
         
         if (this.state.signupRedirect){
-            return <Redirect to="/register"/>;
+            return <Redirect to="/prototype/register"/>;
         }
         console.log(`login: ${login}`)
         if (login.jwtToken){

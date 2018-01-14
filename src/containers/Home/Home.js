@@ -39,12 +39,12 @@ const Home=props=>{
                     <main className="main">
                       <Container>
                         <Switch>
-                            <Route path="/login" name="Login" component={Login}/> 
-                            <Route path="/register" name="Register" component={Register}/>
-                            <Route path="/registerThankYou" name="Register Thank you" component={RegisterThankYou}/>
-                            <Route path="/news" name="News" component={News}/>
-                            <PrivateRoute authed={isLoggedIn(props)} path='/profile' component = {Profile} />
-                            <PrivateRoute authed={isLoggedIn(props)} path='/portfolio' component = {Portfolio} />
+                            <Route exact={true} path="/prototype/login" name="Login" component={Login}/> 
+                            <Route exact={true} path="/prototype/register" name="Register" component={Register}/>
+                            <Route exact={true} path="/prototype/registerThankYou" name="Register Thank you" component={RegisterThankYou}/>
+                            <Route exact={true} path="/prototype/news" name="News" component={News}/>
+                            <PrivateRoute authed={isLoggedIn(props)} exact={true} path='/prototype/profile' component = {Profile} />
+                            <PrivateRoute authed={isLoggedIn(props)} exact={true} path='/prototype/portfolio' component = {Portfolio} />
                             <Route path="/" name="Default" component={Default}/>
                             <Route render={() => (
                                 <div className='container'>
