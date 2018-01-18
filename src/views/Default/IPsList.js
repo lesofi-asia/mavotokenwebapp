@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 import EnhancedDataTable from '../../components/MaterialUi/DataTable/EnhancedDataTable';
 import Avatar from 'material-ui/Avatar';
 import TrendingUp from 'material-ui-icons/TrendingUp';
@@ -40,8 +41,11 @@ const getAvatarSrc=(ipCode)=>{
 
 const customCol = (col,row)=>{
   if (col.id==='ipAvatar'){
+    const to=`/prototype/ipDetail/${row.id}`;
     return (
-      <Avatar src={getAvatarSrc(row.ipCode)}  />
+      <Link to={to}>
+        <Avatar src={getAvatarSrc(row.ipCode)}  />
+      </Link>
     )
   }
   if (col.id==='trending'){

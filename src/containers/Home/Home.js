@@ -12,6 +12,7 @@ import RegisterThankYou from '../../views/Account/RegisterThankYou';
 import Login from '../../views/Account/Login';
 import Profile from '../../views/Private/Profile';
 import Portfolio from '../../views/Private/Portfolio';
+import IPDetail from '../../views/Private/IPDetail';
 
 const PrivateRoute = ({component: Component, authed, ...rest}) => {  
     return (    
@@ -45,6 +46,7 @@ const Home=props=>{
                             <Route exact={true} path="/prototype/news" name="News" component={News}/>
                             <PrivateRoute authed={isLoggedIn(props)} exact={true} path='/prototype/profile' component = {Profile} />
                             <PrivateRoute authed={isLoggedIn(props)} exact={true} path='/prototype/portfolio' component = {Portfolio} />
+                            <PrivateRoute authed={isLoggedIn(props)} exact={true} path='/prototype/ipDetail/:id' component = {IPDetail} />
                             <Route path="/" name="Default" component={Default}/>
                             <Route render={() => (
                                 <div className='container'>
