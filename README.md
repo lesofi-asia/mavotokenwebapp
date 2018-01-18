@@ -1,3 +1,3 @@
-# mavoTokenWebApp
+# MAVOToken Web Application Platform
 
-Mavo Token Web Application Platform
+MAVOToken Web Application Platform
