@@ -27,8 +27,8 @@ const Profile=props=>{
                  <Card>
                    <CardBitcoinProfile 
                      icon={profileAvatar}
-                     profileName={'Steve Jobs'}
-                     email={'steve@mavotoken.com'}
+                     profileName={'Guest 201'}
+                     email={'guest@mavotoken.com'}
                      bitcoinValue={'1000BTC'}
                     />  
                  </Card> 

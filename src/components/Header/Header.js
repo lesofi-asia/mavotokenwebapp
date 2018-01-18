@@ -95,7 +95,7 @@ class Header extends Component {
         <div className='container'>
           <div className="topnav" id="myTopnav">
                 <Link to="/prototype/" className='logo active' >
-                  MAVOTOKEN
+                  MAVOTOKEN&nbsp;<span className="badge badge-pill badge-warning" style={{fontSize: '8px'}}>Prototype</span>
                 </Link>
                 
                 <Link to="/prototype/">
@@ -111,6 +111,10 @@ class Header extends Component {
                 <Link to="/prototype/news">
                   News
                 </Link>
+
+                <a href='https://github.com/magicmavostudio/mavotokenwebapp' target='_blank'>
+                  GitHub
+                </a>
 
                 {!this.props.profile?(
                   <Link to="/prototype/register">

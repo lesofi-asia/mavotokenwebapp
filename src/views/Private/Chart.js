@@ -49,7 +49,7 @@ const stoAppearance = {
 
 class CandleStickChartWithDarkTheme extends React.Component {
 	render() {
-		const height = 750;
+		const height = 550;
 		const { type, data: initialData, width, ratio } = this.props;
 
 		const margin = { left: 70, right: 70, top: 20, bottom: 30 };
@@ -186,95 +186,7 @@ class CandleStickChartWithDarkTheme extends React.Component {
 						yAccessor={d => d.volume}
 						fill={d => d.close > d.open ? "#6BA583" : "#DB0000"} />
 				</Chart>
-                {/*
-				<Chart id={3}
-					yExtents={[0, 100]}
-					height={125} origin={(w, h) => [0, h - 375]} padding={{ top: 10, bottom: 10 }}
-				>
-					<XAxis axisAt="bottom" orient="bottom"
-						showTicks={false}
-						outerTickSize={0}
-						stroke="#FFFFFF" opacity={0.5} />
-					<YAxis axisAt="right" orient="right"
-						tickValues={[20, 50, 80]}
-						tickStroke="#FFFFFF"/>
-					<MouseCoordinateY
-						at="right"
-						orient="right"
-						displayFormat={format(".2f")} />
-
-					<StochasticSeries
-						yAccessor={d => d.slowSTO}
-						{...stoAppearance} />
-					<StochasticTooltip
-						origin={[-38, 15]}
-						yAccessor={d => d.slowSTO}
-						options={slowSTO.options()}
-						appearance={stoAppearance}
-						label="Slow STO" />
-				</Chart>
-				<Chart id={4}
-					yExtents={[0, 100]}
-					height={125} origin={(w, h) => [0, h - 250]} padding={{ top: 10, bottom: 10 }}
-				>
-					<XAxis axisAt="bottom" orient="bottom"
-						showTicks={false}
-						outerTickSize={0}
-						stroke="#FFFFFF"
-						opacity={0.5} />
-					<YAxis axisAt="right" orient="right"
-						tickValues={[20, 50, 80]}
-						tickStroke="#FFFFFF"/>
-
-					<MouseCoordinateY
-						at="right"
-						orient="right"
-						displayFormat={format(".2f")} />
-
-					<StochasticSeries
-						yAccessor={d => d.fastSTO}
-						{...stoAppearance} />
-					<StochasticTooltip
-						origin={[-38, 15]}
-						yAccessor={d => d.fastSTO}
-						options={fastSTO.options()}
-						appearance={stoAppearance}
-						label="Fast STO" />
-				</Chart>
-				<Chart id={5}
-					yExtents={[0, 100]}
-					height={125}
-					origin={(w, h) => [0, h - 125]}
-					padding={{ top: 10, bottom: 10 }}
-				>
-					<XAxis axisAt="bottom" orient="bottom"
-						{...xGrid}
-						tickStroke="#FFFFFF"
-						stroke="#FFFFFF" />
-					<YAxis axisAt="right" orient="right"
-						tickValues={[20, 50, 80]}
-						tickStroke="#FFFFFF"/>
-
-					<MouseCoordinateX
-						at="bottom"
-						orient="bottom"
-						displayFormat={timeFormat("%Y-%m-%d")} />
-					<MouseCoordinateY
-						at="right"
-						orient="right"
-						displayFormat={format(".2f")} />
-
-					<StochasticSeries
-						yAccessor={d => d.fullSTO}
-						{...stoAppearance} />
-					<StochasticTooltip
-						origin={[-38, 15]}
-						yAccessor={d => d.fullSTO}
-						options={fullSTO.options()}
-						appearance={stoAppearance}
-						label="Full STO" />
-				</Chart>*/}
-				<CrossHairCursor stroke="#FFFFFF" />
+               <CrossHairCursor stroke="#FFFFFF" height={550} />
 			</ChartCanvas>
 		);
 	}
