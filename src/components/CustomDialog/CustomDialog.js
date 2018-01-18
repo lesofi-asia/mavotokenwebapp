@@ -1,10 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Dialog from 'material-ui/Dialog';
-import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
-import IframeViewer from '../IframeViewer'
-import * as actions from '../../redux/dialogIframe/actions';
+import Dialog,{ DialogTitle, DialogContent} from 'material-ui/Dialog';
+import PropTypes from 'prop-types';
+import * as actions from '../../redux/dialogSession/actions';
 
 const styles = {
     dialogRoot: {
@@ -31,34 +29,30 @@ const closeDialog = props => {
     props.closeDialog();
 }
 
-const DialogIframeViewer = props => {
-    const actions = [
+const CustomDialog = props => {
+    /*const actions = [
         <FlatButton
           label="Close"
           primary={true}
           onClick={()=> closeDialog(props)}
         />,
-    ];
+    ];*/
 
     return (
         <div className='container'>
             <div className="row">
                 <Dialog
+                    fullWidth={false}
                     title={props.title}
-                    actions={actions}
-                    modal={false}
-                    open={props.dialogIframe.dialogOpen}
-                    onRequestClose={()=> closeDialog(props)}
-                    contentStyle={ styles.dialogContent }
-                    bodyStyle={ styles.dialogBody }
-                    style={ styles.dialogRoot }
-                    repositionOnUpdate={ false }
-                    autoDetectWindowHeight={false}
-                    autoScrollBodyContent={true}
+                    open={props.dialogSession.dialogOpen}
+                    onClose={()=> closeDialog(props)}
+                    aria-labelledby="responsive-dialog-title"
                     >
-                    <IframeViewer renderUrl={props.renderUrl} />
+                    <DialogTitle id="responsive-dialog-title">{props.title}</DialogTitle>
+                    <DialogContent>
+                    {props.children}
+                    </DialogContent>
                </Dialog> 
-               <RaisedButton label={props.title} onClick={()=>openDialog(props)} /> 
             </div>
         </div>
     )
@@ -66,7 +60,7 @@ const DialogIframeViewer = props => {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        dialogIframe: state.dialogIframe
+        dialogSession: state.dialogSession
     }
 }
 
@@ -81,4 +75,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(DialogIframeViewer)
+CustomDialog.propTypes = {
+    children: PropTypes.element.isRequired,
+    title: PropTypes.string.isRequired,
+    isModal: PropTypes.bool,
+    openDialogNow: PropTypes.bool
+}
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(CustomDialog)

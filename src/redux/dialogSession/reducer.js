@@ -20,6 +20,6 @@ const closeDialog = (state)=>{
 }
 
 export default reduce(initialState,{
-    [actionTypes.DIALOGIFRAME_OPEN]: openDialog,
-    [actionTypes.DIALOGIFRAME_CLOSE]: closeDialog
+    [actionTypes.DIALOG_SESSION_OPEN]: openDialog,
+    [actionTypes.DIALOG_SESSION_CLOSE]: closeDialog
 });

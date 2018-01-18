@@ -1,9 +1,9 @@
 import * as actionTypes from './actionTypes';
 
 export const openDialog=()=>{
-    return { type: actionTypes.DIALOGIFRAME_OPEN };
+    return { type: actionTypes.DIALOG_SESSION_OPEN };
 }
 
 export const closeDialog=()=>{
-    return { type: actionTypes.DIALOGIFRAME_CLOSE };
+    return { type: actionTypes.DIALOG_SESSION_CLOSE };
 }

@@ -43,6 +43,7 @@
     "is-url-external": "^1.0.3",
     "material-ui": "^1.0.0-beta.22",
     "material-ui-icons": "^1.0.0-beta.17",
+    "qrcode.react": "^0.7.2",
     "query-string": "^5.0.1",
     "react": "^15.6.1",
     "react-chartjs-2": "2.6.2",
@@ -63,7 +64,8 @@
     "redux-form": "^7.1.2",
     "redux-thunk": "^2.2.0",
     "simple-line-icons": "^2.4.1",
-    "simple-react-pdf": "^1.0.9"
+    "simple-react-pdf": "^1.0.9",
+    "uuid": "^3.2.1"
   },
   "scripts": {
     "dev": "webpack -d --progress --watch --profile --json > compilation-stats.json --env.dev",
