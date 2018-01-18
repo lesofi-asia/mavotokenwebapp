@@ -77,7 +77,7 @@ class Login extends Component {
     }
 
     render(){
-        const { from } = this.props.location.state || { from: { pathname: '/profile' } }
+        const { from } = this.props.location.state || { from: { pathname: '/prototype/profile' } }
         const { login } = this.props;
         
         if (this.state.signupRedirect){
