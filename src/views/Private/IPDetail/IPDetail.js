@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Chart from './Chart';
-import { tsvParse, csvParse } from  'd3-dsv';
-import { timeParse } from 'd3-time-format';
-import { getData } from './ChartUtil';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
 import Typography from 'material-ui/Typography';
+import IPBio from './IPBio';
+import IPMarket from './IPMarket';
 
 const TabContainer=props=>{
     return (
@@ -30,15 +28,11 @@ const styles = theme => ({
 
 class IPDetail extends React.Component {
     state = {
-        value: 0,
-        data: null
+        value: 0
     };
 
     componentDidMount() {
-		getData().then(data => {
-			this.setState({ data })
-		})
-    }
+	}
 
     handleChange = (event, value) => {
         this.setState({ value });
@@ -47,13 +41,6 @@ class IPDetail extends React.Component {
     render(){
         const { classes } = this.props;
         const { value } = this.state;
-        const renderChartComponent=this.state.data == null?(
-            <div>Loading...</div>
-        ):(
-            <div style={{backgroundColor: '#141414'}}>
-              <Chart type={'svg'} data={this.state.data} width={500} />
-            </div>
-        )
         
         return (
             <div className='container'>
@@ -61,22 +48,22 @@ class IPDetail extends React.Component {
                     <br />
                 </div>    
                 <div className='row'>
-                    <h2>IP Detail</h2>
+                    <h2>MAVO IP Detail</h2>
                 </div> 
                 <div className='row'>
                     <div className={classes.root}>
                         <AppBar position="static" style={{backgroundColor: '#141414'}}>
                         <Tabs value={value} onChange={this.handleChange}>
-                            <Tab label="Market" />
-                            <Tab label="IP Detail" />
+                            <Tab label="IP Market" />
+                            <Tab label="IP Biograghy" />
                         </Tabs>
                         </AppBar>
                         {value === 0 && (
                         <TabContainer>
-                            {renderChartComponent}
+                            <IPMarket />
                         </TabContainer>
                         )}
-                        {value === 1 && <TabContainer>Item Two</TabContainer>}
+                        {value === 1 && <TabContainer><IPBio /></TabContainer>}
                     </div>
                 </div>
             </div>    
@@ -86,7 +73,3 @@ class IPDetail extends React.Component {
 }
 
 export default withStyles(styles)(IPDetail);
-
-{
-    /** */
-}

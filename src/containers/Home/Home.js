@@ -44,9 +44,9 @@ const Home=props=>{
                             <Route exact={true} path="/prototype/register" name="Register" component={Register}/>
                             <Route exact={true} path="/prototype/registerThankYou" name="Register Thank you" component={RegisterThankYou}/>
                             <Route exact={true} path="/prototype/news" name="News" component={News}/>
+                            <Route exact={true} path="/prototype/ipDetail/:id" name="IP Detail" component={IPDetail}/>
                             <PrivateRoute authed={isLoggedIn(props)} exact={true} path='/prototype/profile' component = {Profile} />
                             <PrivateRoute authed={isLoggedIn(props)} exact={true} path='/prototype/portfolio' component = {Portfolio} />
-                            <PrivateRoute authed={isLoggedIn(props)} exact={true} path='/prototype/ipDetail/:id' component = {IPDetail} />
                             <Route path="/" name="Default" component={Default}/>
                             <Route render={() => (
                                 <div className='container'>
