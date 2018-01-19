@@ -1,6 +1,8 @@
 import React from 'react';
 import Chart from './Chart';
+import SellTrans from './SellTrans';
 import BuyTrans from './BuyTrans';
+import Trade from './Trade';
 import { getData } from './ChartUtil';
 
 class IPMarket extends React.Component {
@@ -26,10 +28,18 @@ class IPMarket extends React.Component {
         return (
             <div className='container'>
                 <div className='row'>
-                    <div className='col-sm'>
+                    <div className='col-sm-7'>
                       {renderChartComponent}
                     </div>
-                    <div className='col-sm'>
+                    <div className='col-sm-5'>
+                        <SellTrans />
+                    </div>
+                </div>
+                <div className='row'>
+                    <div className='col-sm-7'>
+                       <Trade />
+                    </div>
+                    <div className='col-sm-5'>
                        <BuyTrans />
                     </div>
                 </div>

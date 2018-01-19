@@ -7,6 +7,7 @@ import Table,{
 } from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
 import { withStyles } from 'material-ui/styles';
+import { setInterval, clearInterval } from 'timers';
 import shuffle from 'shuffle-array';
 
 const styles = theme => ({
@@ -25,7 +26,7 @@ const styles = theme => ({
         paddingRight: '4px'
     },
     cellText: {
-      color: 'green'
+      color: 'red'
     }
 })
 
@@ -68,7 +69,20 @@ const tableData = [
   }
 ];
 
-class BuyTrans extends Component {
+const shuffe=(array)=>{
+  let i = 0
+  let j = 0
+  let temp = null
+
+  for (i = array.length - 1; i > 0; i -= 1) {
+    j = Math.floor(Math.random() * (i + 1))
+    temp = array[i]
+    array[i] = array[j]
+    array[j] = temp
+  }
+}
+
+class SellTrans extends Component {
     state = {
       fixedHeader: true,
       fixedFooter: true,
@@ -80,8 +94,7 @@ class BuyTrans extends Component {
       deselectOnClickaway: true,
       showCheckboxes: true,
       height: '300px',
-      tableData: tableData,
-      intervalId: null
+      tableData: tableData
     };
   
     shuffeData=()=>{
@@ -90,7 +103,7 @@ class BuyTrans extends Component {
     }
 
     componentDidMount(){
-      this.timer=setInterval(this.shuffeData, 1000)
+       this.timer=setInterval(this.shuffeData, 1000)
     }
 
     componentWillUnmount(){
@@ -126,4 +139,4 @@ class BuyTrans extends Component {
     }
   }
 
-  export default withStyles(styles)(BuyTrans);
+  export default withStyles(styles)(SellTrans);

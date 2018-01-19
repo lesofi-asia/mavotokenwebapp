@@ -30,7 +30,7 @@ export default class AdsCarousel extends React.Component {
     
         setTimeout(() => {
           this.setState({
-            children: this.createChildren(20),
+            children: this.createChildren(5),
           })
         }, 100);
     }

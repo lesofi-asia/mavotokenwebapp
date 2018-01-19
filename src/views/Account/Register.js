@@ -165,6 +165,7 @@ class Register extends Component {
                  
                 {this.displayError(this.props.login)}
                 
+                {/*
                 <div className='row'>
                     <div className='col-sm'>
                         <div className="d-flex flex-row">
@@ -195,7 +196,7 @@ class Register extends Component {
                         </div>
                     </div>
                 </div>
-
+                */}
                 <div className='row'>
                     <div className='col-sm'>
                         <div className="d-flex flex-row">
