@@ -25,10 +25,27 @@ const styles = {
 
 const CardBitcoinProfile=({icon,profileName,email,bitcoinValue})=>{
     return (
-        <div style={styles.cardContainer}>
+            <div className='container cardBitProfileContainer'>
+                <div className='row'>
+                    <div className='cardBitProfileContainer avatar'>
+                        <Avatar src={icon} />
+                    </div>
+                    <div className='cardBitProfileContainer profileInfo'> 
+                        <span className='cardBitProfileContainer title'>{profileName}</span>
+                        <br />
+                        <span>{email}</span>
+                    </div>
+                    <div className='cardBitProfileContainer bitcoinInfo'> 
+                        <span className='cardBitProfileContainer title'>Estimated Value</span>
+                        <br />
+                        <span>{bitcoinValue}</span>
+                    </div>
+                      
+                </div>        
+            {/*
             <div className="d-flex flex-row">
                 <div className="p-2">
-                    <div style={styles.icon}>
+                    <div className='cardBitProfileContainer avatar'>
                         <Avatar src={icon} />
                     </div>
                 </div>
@@ -46,7 +63,8 @@ const CardBitcoinProfile=({icon,profileName,email,bitcoinValue})=>{
                         <span>{bitcoinValue}</span>
                     </div>
                 </div>        
-            </div>    
+            </div> 
+            */}   
         </div> 
     )
 }

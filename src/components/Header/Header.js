@@ -1,67 +1,26 @@
 import React, { Component } from 'react';
-/*import {
-  Nav,
-  Navbar,
-  NavItem,
-  NavbarToggler,
-  NavbarBrand,
-  NavLink,
-  Badge,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  Container,
-  Collapse,
-  UncontrolledDropdown
-} from 'reactstrap';*/
-
+import { connect } from 'react-redux';
 import { Container,NavItem,NavLink,Collapse,NavbarBrand,Nav,NavbarToggler,Navbar } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Avatar from 'material-ui/Avatar';
 import defaultProfilePhoto from '../../views/ImageAssets/stevejobs_avatar.jpg'
+import * as actions from '../../redux/topNav/actions';
 
 class Header extends Component {
-
-  state = {
-    isOpen: true
-  }
-
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
-
-  sidebarToggle(e) {
-    e.preventDefault();
-    document.body.classList.toggle('sidebar-hidden');
-  }
-
-  sidebarMinimize(e) {
-    e.preventDefault();
-    document.body.classList.toggle('sidebar-minimized');
-  }
-
-  mobileSidebarToggle(e) {
-    e.preventDefault();
-    document.body.classList.toggle('sidebar-mobile-show');
-  }
-
-  asideToggle(e) {
-    e.preventDefault();
-    document.body.classList.toggle('aside-menu-hidden');
-  }
 
   logout() {
     this.props.logout();
   }
 
   componentDidMount(){
-    //document.body.classList.toggle('sidebar-hidden');
   }
   componentWillMount(){
-   // document.body.classList.toggle('sidebar-hidden');
+  }
+  componentWillUpdate(){
+     const x = document.getElementById("myTopnav");
+     if (x.className.indexOf('responsive')>0){
+        x.className = "topnav";
+     }
   }
 
   menuClick(e){
@@ -77,7 +36,7 @@ class Header extends Component {
     const renderLogonComponent = () => {
       if (this.props.profile){
         return (
-            <div className="dropdownMenu">
+            <div className="avatarProfile dropdownMenu">
                 <button className="dropbtn"><Avatar src={defaultProfilePhoto} /></button>
                 <div className="dropdown-content">
                   <Link to="/prototype/profile" className="profileLink">
@@ -98,7 +57,7 @@ class Header extends Component {
                   MAVOTOKEN&nbsp;<span className="badge badge-pill badge-warning" style={{fontSize: '8px'}}>Prototype</span>
                 </Link>
                 
-                <Link to="/prototype/">
+                <Link to="/prototype/" >
                     Home
                 </Link>
 
@@ -137,4 +96,17 @@ class Header extends Component {
   }
 }
 
-export default Header;
+//export default Header;
+const mapStateToProps = (state) => {
+  return state;
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+      topnavUpdate: () => {
+          dispatch(actions.topnavUpdate())
+      },
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Header)

@@ -2,6 +2,8 @@ import React from 'react';
 import Carousel from '../../components/Carousel';
 import AdsCarousel from './AdsCarousel';
 import IPsList from './IPsList';
+import { connect } from 'react-redux';
+import * as topnavActions from '../../redux/topNav/actions';
 
 // Data for carousel
 const carouselSlidesData = [
@@ -47,6 +49,10 @@ const carouselSlidesData = [
 
 export class Default extends React.Component {
 
+    componentDidMount(){
+      this.props.topnavUpdate()
+    }
+
     render(){
           return (
             <div className="container" >
@@ -75,4 +81,16 @@ export class Default extends React.Component {
     }
 }
 
-export default Default;
+const mapStateToProps = (state, ownProps) => {
+   return state
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    topnavUpdate: () => {
+      dispatch(topnavActions.topnavUpdate())
+    }
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Default);

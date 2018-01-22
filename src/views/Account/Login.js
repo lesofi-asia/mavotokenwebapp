@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import textFieldStyles from '../Styles/textFieldStyles';
 import * as actions from '../../redux/login/actions';
+import * as topnavActions from '../../redux/topNav/actions';
 
 class Login extends Component {
     state = {
@@ -15,6 +16,9 @@ class Login extends Component {
       signupRedirect: false
     }
     
+    componentDidMount(){
+        this.props.topnavUpdate()
+    }
     componentWillMount(){
     }
 
@@ -177,6 +181,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
       accountLogin: (email,password) => {
          dispatch(actions.login(email,password))  
+      },
+      topnavUpdate: () => {
+        dispatch(topnavActions.topnavUpdate())
       }
     }
 }

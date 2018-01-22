@@ -31,22 +31,9 @@ $color_2: #dbab83;
     }
 }
 
-@media screen and (max-width: 600px) {
-    .topnav {
-		a {
-			&:not(:first-child) {
-				display: none;
-			}
-		}
-		a.icon {
-			float: right;
-			display: block;
-        }
-        a.profileLink {
-            display: block;
-        }
-    }
-    .topnav.responsive {
+@mixin topnav-responsive()
+{
+    .topnav.responsive{
         position: relative;
         .icon {
             position: absolute;
@@ -61,6 +48,56 @@ $color_2: #dbab83;
     }
 }
 
+@mixin topnav-menu-responsive(){
+    a {
+        &:not(:first-child) {
+            display: none;
+        }
+    }
+    a.icon {
+        float: right;
+        display: block;
+    }
+    a.profileLink {
+        display: block;
+    }
+
+    .avatarProfile {
+        position: absolute;
+        right: 15%;
+        top: 0;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .topnav{
+        .logo {
+            padding-right: 70%;
+        }
+    }
+    @include topnav-responsive()
+}
+
+@media screen and (max-width: 767px) {
+    .topnav{
+        .logo {
+            padding-right: 45%;
+        }
+        @include topnav-menu-responsive()
+    }
+    @include topnav-responsive()
+}
+
+@media screen and (max-width: 479px) {
+    .topnav{
+        .logo {
+            padding-right: 23%;
+        }
+        @include topnav-menu-responsive()
+    }
+    @include topnav-responsive()
+}
+
 .topnavBackground {
     background-color: #141414;
 }
@@ -69,10 +106,6 @@ $color_2: #dbab83;
     background-color: #141414;
     color: white;
 }
-
-
-
-
 
 $background_color_3: #f1f1f1;
 $background_color_4: #f26635;
@@ -89,15 +122,21 @@ $background_color_4: #f26635;
 .dropdownMenu {
 	position: absolute;
     display: inline-block;
-    &:hover {
-		.dropdown-content {
-			display: block;
-		}
-		.dropbtn {
-			background-color: $background_color_2;
-		}
-	}
+    .dropdown-content {
+        display: none;
+    }
 }
+.dropdownMenu:hover {
+	position: absolute;
+    display: inline-block;
+    .dropdown-content {
+        display: block;
+    }
+    .dropbtn {
+        background-color: $background_color_2;
+    }
+}
+
 .dropdown-content {
 	display: none;
 	position: absolute;

@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import textFieldStyles from '../Styles/textFieldStyles';
 import * as actions from '../../redux/login/actions';
+import * as topnavActions from '../../redux/topNav/actions';
 
 const checkboxLabel = (
   <span>&nbsp;I have read and agree to the&nbsp;
@@ -148,6 +149,10 @@ class Register extends Component {
         this.setState({checkBoxTnC: e.target.checked});
     }
 
+    componentDidMount(){
+        this.props.topnavUpdate()
+    }
+
     render(){
         if (this.props.login.accountCreated){
             return <Redirect to="/registerThankYou"/>;
@@ -282,6 +287,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
       createAccount: (firstName,lastName,email,password) => {
          dispatch(actions.createAccount(firstName,lastName,email,password))  
+      },
+      topnavUpdate: () => {
+        dispatch(topnavActions.topnavUpdate())
       }
     }
 }
