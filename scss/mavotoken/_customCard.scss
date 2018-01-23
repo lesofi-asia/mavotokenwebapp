@@ -19,3 +19,30 @@
         font-weight: bold;
     }
 }
+
+.cardActionContainer {
+    padding-bottom: 5px;
+
+    .iconContainer {
+        .icon {
+            width: 50px;
+        }
+    }
+    .descContainer {
+        overflow: hidden;
+        padding-left: 5px;
+        width: 80%;
+        .title {
+            font-weight: bold;
+        }
+        .desc {
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            hyphens: auto;
+        }
+    }
+    .actionContainer {
+        padding-left: 2px;
+    }
+    
+}
