@@ -27,19 +27,20 @@ import { last } from "react-stockcharts/lib/utils";
 class CandleStickChartForContinuousIntraDay extends React.Component {
 	render() {
 		const { type, data, width, ratio } = this.props;
-
+		
 		const xAccessor = d => d.date;
 		const start = xAccessor(last(data));
 		const end = xAccessor(data[Math.max(0, data.length - 150)]);
+		
 		const xExtents = [start, end];
 
 		return (
 			<ChartCanvas height={400}
 					ratio={ratio}
 					width={width}
-					margin={{ left: 80, right: 80, top: 10, bottom: 30 }}
+					margin={{ left: 40, right: 100, top: 10, bottom: 30 }}
 					type={type}
-					seriesName="MSFT"
+					seriesName="MVT"
 					data={data}
 					xScale={scaleTime()}
 					xAccessor={xAccessor}

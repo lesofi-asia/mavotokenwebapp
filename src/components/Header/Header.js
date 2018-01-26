@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getTranslate,getActiveLanguage,setActiveLanguage } from 'react-localize-redux';
 import { Container,NavItem,NavLink,Collapse,NavbarBrand,Nav,NavbarToggler,Navbar } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Link,Redirect } from 'react-router-dom';
 import Avatar from 'material-ui/Avatar';
 import defaultProfilePhoto from '../../views/ImageAssets/stevejobs_avatar.jpg'
 import * as actions from '../../redux/topNav/actions';
@@ -18,10 +18,7 @@ class Header extends Component {
   componentWillMount(){
   }
   componentWillUpdate(){
-     const x = document.getElementById("myTopnav");
-     if (x.className.indexOf('responsive')>0){
-        x.className = "topnav";
-     }
+     this.updateNavMenu()
   }
 
   menuClick(e){
@@ -43,6 +40,43 @@ class Header extends Component {
     }
   }
 
+  updateNavMenu=()=>{
+    const x = document.getElementById("myTopnav");
+     if (x.className.indexOf('responsive')>0){
+        x.className = "topnav";
+     }
+  }
+
+  tradeClick=()=>{
+    this.updateNavMenu()
+    return <Redirect to='/prototype/' />
+  }
+
+  newsClick=()=>{
+    this.updateNavMenu()
+    return <Redirect to='/prototype/news' />
+  }
+
+  registerClick=()=>{
+    this.updateNavMenu()
+    return <Redirect to='/prototype/register' />
+  }
+
+  loginClick=()=>{
+    this.updateNavMenu()
+    return <Redirect to='/prototype/login' />
+  }
+
+  portfolioClick=()=>{
+    this.updateNavMenu()
+    return <Redirect to='/prototype/portfolio' />
+  }
+
+  profileClick=()=>{
+    this.updateNavMenu()
+    return <Redirect to='/prototype/profile' />
+  }
+
   render() {
     const renderLogonComponent = () => {
       if (this.props.profile){
@@ -50,7 +84,7 @@ class Header extends Component {
             <div className="avatarProfile dropdownMenu">
                 <button className="dropbtn"><Avatar src={defaultProfilePhoto} /></button>
                 <div className="dropdown-content">
-                  <Link to="/prototype/profile" className="profileLink">
+                  <Link to="/prototype/profile" className="profileLink" onClick={()=> this.profileClick()}>
                      { this.props.translate('profile') }
                   </Link>
                   <a href="#" className="profileLink" onClick={this.logout.bind(this)}>{ this.props.translate('logout') }</a>
@@ -72,31 +106,31 @@ class Header extends Component {
                   { this.props.translate('language') }
                 </Link>
 
-                <Link to="/prototype/" >
+                <Link to="/prototype/" onClick={()=> this.tradeClick()} >
                     { this.props.translate('trade') }
                 </Link>
 
                 {this.props.profile?(
-                  <Link to="/prototype/portfolio">
+                  <Link to="/prototype/portfolio" onClick={()=> this.portfolioClick()}>
                     { this.props.translate('portfolio') }
                   </Link>
                 ):null}
 
-                <Link to="/prototype/news">
+                <Link to="/prototype/news"  onClick={()=> this.newsClick()}  >
                   { this.props.translate('news') }
                 </Link>
 
-                <a href='https://github.com/magicmavostudio/mavotokenwebapp' target='_blank'>
+                <a href='https://github.com/magicmavostudio/mavotokenwebapp'>
                   GitHub
                 </a>
 
                 {!this.props.profile?(
-                  <Link to="/prototype/register">
+                  <Link to="/prototype/register" onClick={()=> this.registerClick()} >
                     { this.props.translate('signup') }
                   </Link>
                 ):null}
                 {!this.props.profile?(
-                  <Link to="/prototype/login">
+                  <Link to="/prototype/login" onClick={()=> this.loginClick()}>
                     { this.props.translate('login') }
                   </Link>
                 ):null}

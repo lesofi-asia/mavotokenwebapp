@@ -76,6 +76,9 @@ class News extends React.Component {
                         </Paper>
                     </div>
                 </div>
+                <div className='row'>
+                    <br />
+                </div>
             </div>
         )
     }

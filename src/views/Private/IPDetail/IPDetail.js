@@ -52,12 +52,10 @@ class IPDetail extends React.Component {
                 </div> 
                 <div className='row'>
                     <div className={classes.root}>
-                        <AppBar position="static" style={{backgroundColor: '#141414'}}>
                         <Tabs value={value} onChange={this.handleChange}>
                             <Tab label="IP Market" />
                             <Tab label="IP Biograghy" />
                         </Tabs>
-                        </AppBar>
                         {value === 0 && (
                         <TabContainer>
                             <IPMarket />
@@ -73,3 +71,12 @@ class IPDetail extends React.Component {
 }
 
 export default withStyles(styles)(IPDetail);
+
+{
+    /** <AppBar position="static" style={{backgroundColor: '#141414'}}>
+                        <Tabs value={value} onChange={this.handleChange}>
+                            <Tab label="IP Market" />
+                            <Tab label="IP Biograghy" />
+                        </Tabs>
+                        </AppBar>* */
+}
