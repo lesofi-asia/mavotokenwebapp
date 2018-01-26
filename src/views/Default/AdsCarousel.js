@@ -11,10 +11,10 @@ import ads3 from '../ImageAssets/demoAds/ads3.jpg';
 const isMobile=(width)=> width <=500;
 
 const demoAds = [
-  { id: 1, code: 'ads1', desc: 'First advertisement description for demo....'},
-  { id: 2, code: 'ads2', desc: 'Second advertisement description for demo....'},
-  { id: 3, code: 'ads3', desc: 'Third advertisement description for demo....'},
-  { id: 4, code: 'ads1', desc: 'First advertisement description for demo....'},
+  { id: 1, code: 'ads1', desc: 'MAVO IP Exchange Referral Program'},
+  { id: 2, code: 'ads2', desc: 'Sign Up and Get 100MVT for Free!'},
+  { id: 3, code: 'ads3', desc: '1st MAVO IP Rights Conference & Hackathon'},
+  { id: 4, code: 'ads1', desc: 'MAVO IP Exchange Referral Program'},
 ]
 
 const getDemoAdsImage=(code)=>{
@@ -44,7 +44,7 @@ export default class AdsCarousel extends React.Component {
 
     createAds = () => demoAds.map((ads)=> {
        return (
-         <div key={ads.id} style={{ height: '120px' }}>
+         <div key={ads.id} style={{ height: '150px' }}>
                 <Card>
                    <CardAds 
                      adsImage={getDemoAdsImage(ads.code)}
@@ -100,7 +100,7 @@ export default class AdsCarousel extends React.Component {
               enablePlaceholder
               numberOfPlaceholderItems={3}
               minimumPlaceholderTime={1000}
-              placeholderItem={<div style={{ height: 200 }}>Placeholder</div>}
+              placeholderItem={<div style={{ height: 150 }}>Placeholder</div>}
       
               // Carousel configurations
               numberOfCards={isMobile(width)?1:3}

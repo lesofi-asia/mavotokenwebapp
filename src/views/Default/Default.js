@@ -59,11 +59,6 @@ export class Default extends React.Component {
                 <div className='row'>
                    <br />
                 </div>
-                {/*
-                <div className='row' style={{backgroundColor: '#202020'}}  >
-                    <Carousel slides={carouselSlidesData}  />
-                </div>  
-                */}
                 <div className='row'>
                    <AdsCarousel />
                 </div>  
