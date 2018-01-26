@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { getTranslate } from 'react-localize-redux';
 import TextField from 'material-ui/TextField';
 import Divider from 'material-ui/Divider';
 import { connect } from 'react-redux';
@@ -27,7 +28,7 @@ class Login extends Component {
         if (value &&
             !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
           ) {
-             this.setState({emailError: 'Invalid email address'})
+             this.setState({emailError: this.props.translate('invalidEmailAddress')})
         }else {
             this.setState({email: value, emailError: null});
         }
@@ -37,7 +38,7 @@ class Login extends Component {
         const value = event.target.value;
         if (value){
             if (value.length < 6){
-                this.setState({passwordError: 'Password is too short!'})
+                this.setState({passwordError: this.props.translate('passwordIsTooShort')})
             }else {
                 this.setState({password: value, passwordError: null});
             }
@@ -51,10 +52,10 @@ class Login extends Component {
           // this.setState({email: email, password: password});
         } else {
           if (!emailError && !email){
-            this.setState({emailError: 'Email is required!'})
+            this.setState({emailError: this.props.translate('emailIsRequired')})
           }
           if (!passwordError && !password){
-            this.setState({passwordError: 'Password is required!'})
+            this.setState({passwordError: this.props.translate('passwordIsRequired')})
           }
         }
     }
@@ -102,7 +103,7 @@ class Login extends Component {
                 </div>
                 <div className='row'>
                     <div className='col-sm'>
-                        <h2>Sign In Your Account</h2>
+                        <h2>{this.props.translate('signInYourAccount')}</h2>
                     </div>
                 </div>    
                 {this.renderError()}
@@ -113,7 +114,7 @@ class Login extends Component {
                             <div className="p-2">
                                 <TextField
                                     name="email"
-                                    label="Email Address"
+                                    label={this.props.translate('emailAddress')}
                                     onChange={this.handleEmailChange.bind(this)}
                                     error={this.state.emailError?true:false}
                                     helperText={this.state.emailError}
@@ -130,7 +131,7 @@ class Login extends Component {
                             <TextField
                                     name="password"
                                     type="password"
-                                    label="Password"
+                                    label={this.props.translate('password')}
                                     onChange={this.handlePasswordChange.bind(this)}
                                     error={this.state.passwordError?true:false}
                                     helperText={this.state.passwordError}
@@ -146,7 +147,7 @@ class Login extends Component {
                         <div className="p-2">
                             <button className="btn btn-primary btn-lg" type="submit" 
                                 onClick={this.handleLoginSubmit.bind(this)}>
-                                Login
+                                {this.props.translate('login')}
                             </button> 
                         </div> 
                         </div>
@@ -154,14 +155,15 @@ class Login extends Component {
                 </div>
                 <div className='row'>
                     <div className='col-sm'>
-                        <div className="d-flex p-2">----------Don't Have Account?---------</div>
+                        <div className="d-flex p-2">----------{this.props.translate('dontHaveAccount')}---------</div>
                     </div>
                 </div>
                 <div className='row'>
                     <div className='col-sm'>
                         <div className="d-flex flex-row">
                             <div className="p-2">
-                                <button type="button" className="btn btn-secondary btn-sm" onClick={this.signUpOnClick.bind(this)}>Sign Up</button>
+                                <button type="button" className="btn btn-secondary btn-sm" 
+                                 onClick={this.signUpOnClick.bind(this)}>{this.props.translate('signup')}</button>
                             </div>
                         </div>
                     </div>
@@ -173,7 +175,8 @@ class Login extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        login: state.login
+        login: state.login,
+        translate: getTranslate(state.locale)
     }
 }
 

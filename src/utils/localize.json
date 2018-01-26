@@ -1,0 +1,162 @@
+{
+    "trade": [
+      "Trade",      
+      "贸易"
+    ],
+    "language": [
+       "中文",
+       "English" 
+    ],
+    "news": [
+        "News",
+        "新闻"
+    ],
+    "portfolio": [
+        "Portfolio",
+        "投资组合"
+    ],
+    "signup": [
+        "Sign Up",
+        "注册"
+    ],
+    "login": [
+        "Log In",
+        "登录"
+    ],
+    "profile": [
+        "Profile",
+        "资料"
+    ],
+    "logout": [
+        "Log Out",
+        "登出"
+    ],
+    "prototype": [
+        "Prototype",
+        "原型开发"
+    ],
+    "platformDesc": [
+        "MAVOIPX is a token exchange platform for MAVO IP TOKEN",
+        "MAVOIPX是MAVO IP TOKEN的代币交换平台"
+    ],
+    "disclosure": [
+        "Disclosure",
+        "泄露"
+    ],
+    "riskStatement": [
+        "Risk Statement",
+        "风险声明"
+    ],
+    "contact": [
+        "Contact",
+        "联系"
+    ],
+    "faq": [
+        "FAQ",
+        "常问问题"
+    ],
+    "joinUs": [
+        "Join Us",
+        "加入我们"
+    ],
+    "policy": [
+        "Policy",
+        "政策"
+    ],
+    "privacyPolicy": [
+        "Privacy Policy",
+        "隐私政策"
+    ],
+    "others": [
+        "Others",
+        "其他"
+    ],
+    "warningStatement": [
+        "Warning Statement",
+        "警告声明"
+    ],
+    "termsNCondition": [
+        "Terms &amp; Conditions",
+        "规则与条例"
+    ],
+    "noOfIP": [
+        "No. of IP",
+        "IP的数量"
+    ],
+    "market": [
+        "Market",
+        "市场"
+    ],
+    "marketCap": [
+        "Market Cap",
+        "市值"
+    ],
+    "24hVolume": [
+        "24H Volume",
+        "24小时量"
+    ],
+    "ipAvatar": [
+        "IP Avatar",
+        "IP 头像"
+    ],
+    "createYourAccount": [
+        "Create Your Account",
+        "创建您的帐户"
+    ],
+    "emailAddress": [
+        "Email Address",
+        "电子邮件地址"
+    ],
+    "password": [
+        "Password",
+        "密码"
+    ],
+    "confirmPassword": [
+        "Confirm Password",
+        "确认密码"
+    ],
+    "createAccount": [
+        "Create Account",
+        "创建帐号"
+    ],
+    "invalidEmailAddress": [
+        "Invalid email address",
+        "无效的邮件地址"
+    ],
+    "passwordIsTooShort": [
+        "Password is too short!",
+        "密码太短了！"
+    ],
+    "passwordDoesNotMatch": [
+        "Password does not match!",
+        "密码不匹配！"
+    ],
+    "iHaveReadAndAgreeToThe": [
+        "I have read and agree to the",
+        "我已经阅读并且同意"
+    ],
+    "and": [
+        "and",
+        "和"
+    ],
+    "signInYourAccount": [
+        "Sign In Your Account",
+        "登录您的帐户"
+    ],
+    "login": [
+        "Login",
+        "登录"
+    ],
+    "dontHaveAccount": [
+        "Don't Have an Account?",
+        "没有一个帐户?"
+    ],
+    "emailIsRequired": [
+        "Email is required!",
+        "邮件是必需的!"
+    ],
+    "passwordIsRequired": [
+        "Password is required!",
+        "密码是必需的！"
+    ]
+  }

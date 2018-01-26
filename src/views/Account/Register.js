@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+import { getTranslate } from 'react-localize-redux';
 import TextField from 'material-ui/TextField';
 import CustomCheckboxField from '../../components/MaterialUi/CustomCheckboxField';
 import GoogleLogin from 'react-google-login';
@@ -9,24 +9,26 @@ import textFieldStyles from '../Styles/textFieldStyles';
 import * as actions from '../../redux/login/actions';
 import * as topnavActions from '../../redux/topNav/actions';
 
-const checkboxLabel = (
-  <span>&nbsp;I have read and agree to the&nbsp;
-    <a
-      href={'https://www.mavotoken.com/'}
-      target="_blank"
-    >
-      Terms and Conditions
-    </a>
-    &nbsp;and&nbsp; 
-    <a
-      href="https://www.mavotoken.com/"
-      target="_blank"
-    >
-      Privacy Policy
-    </a>
-    .
-  </span>
-)
+const checkboxLabel=props =>{
+    return (
+        <span>&nbsp;{props.translate('iHaveReadAndAgreeToThe')}&nbsp;
+            <a
+            href={'https://www.mavotoken.com/'}
+            target="_blank"
+            >
+            {props.translate('termsNCondition')}
+            </a>
+            &nbsp;{props.translate('and')}&nbsp; 
+            <a
+            href="https://www.mavotoken.com/"
+            target="_blank"
+            >
+           {props.translate('privacyPolicy')}
+            </a>
+            .
+        </span>
+    )
+}
 
 class Register extends Component {
     constructor(props){
@@ -75,7 +77,7 @@ class Register extends Component {
         if (value &&
             !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
           ) {
-             this.setState({emailError: 'Invalid email address'})
+             this.setState({emailError: this.props.translate('invalidEmailAddress')})
         }else {
             this.setState({email: value, emailError: null});
         }
@@ -85,7 +87,7 @@ class Register extends Component {
         const value = event.target.value;
         if (value){
             if (value.length < 6){
-                this.setState({passwordError: 'Password is too short!'})
+                this.setState({passwordError: this.props.translate('passwordIsTooShort')})
             }else {
                 this.setState({password: value, passwordError: null});
             }
@@ -95,7 +97,7 @@ class Register extends Component {
         const value = event.target.value;
         if (value){
             if (!(value===this.state.password)){
-                this.setState({confirmPasswordError: 'Password does not match!'})
+                this.setState({confirmPasswordError: this.props.translate('passwordDoesNotMatch')})
             }else {
                 this.setState({confirmPassword: value, confirmPasswordError: null});
             }
@@ -119,13 +121,13 @@ class Register extends Component {
         if (checkBoxTnC && isValid && firstName && lastName && email && password && confirmPassword) {
             return (
                 <button className="btn btn-primary btn-lg" type="submit" onClick={this.handleCreateAccountSubmit}>
-                    Create Account
+                  {this.props.translate('createAccount')}
                 </button> 
             )
         }else {
             return (
                 <button className="btn btn-secondary btn-lg disabled" type="submit">
-                        Create Account
+                   {this.props.translate('createAccount')}
                 </button> 
             )
         }
@@ -164,7 +166,7 @@ class Register extends Component {
                 </div>
                 <div className='row'>
                     <div className='col-sm'>
-                        <h2>Create Your Account</h2>
+                        <h2>{this.props.translate('createYourAccount')}</h2>
                     </div>
                 </div> 
                  
@@ -208,7 +210,7 @@ class Register extends Component {
                             <div className="p-2">
                                 <TextField
                                     name="email"
-                                    label="Email Address"
+                                    label={this.props.translate('emailAddress')}
                                     onChange={this.handleEmailChange}
                                     error={this.state.emailError?true:false}
                                     helperText={this.state.emailError}
@@ -225,7 +227,7 @@ class Register extends Component {
                             <TextField
                                     name="password"
                                     type="password"
-                                    label="Password"
+                                    label={this.props.translate('password')}
                                     onChange={this.handlePasswordChange}
                                     error={this.state.passwordError?true:false}
                                     helperText={this.state.passwordError}
@@ -242,7 +244,7 @@ class Register extends Component {
                             <TextField
                                     name="confirmPassword"
                                     type="password"
-                                    label="Confirm Password"
+                                    label={this.props.translate('confirmPassword')}
                                     onChange={this.handleConfirmPasswordChange}
                                     error={this.state.confirmPasswordError?true:false}
                                     helperText={this.state.confirmPasswordError}
@@ -257,7 +259,7 @@ class Register extends Component {
                         <div className="d-flex flex-row">
                             <div className="p-2">
                                 <input type="checkbox" onClick={(e)=> this.checkBoxTnCOnClick(e)}  />
-                                {checkboxLabel}
+                                {checkboxLabel(this.props)}
                             </div>
                         </div>  
                     </div>
@@ -279,7 +281,8 @@ class Register extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        login: state.login
+        login: state.login,
+        translate: getTranslate(state.locale)
     }
 }
 

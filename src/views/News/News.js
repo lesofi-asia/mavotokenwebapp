@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types';
+import { getTranslate } from 'react-localize-redux';
 import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
@@ -31,7 +32,7 @@ class News extends React.Component {
                 </div>
                 <div className='row'>
                     <div className='col-sm'>
-                        <h2>News</h2>
+                        <h2>{this.props.translate('news')}</h2>
                     </div>
                 </div>
                 <div className='row'>
@@ -83,7 +84,9 @@ class News extends React.Component {
 const NewsWithStyle=withStyles(styles)(News);
 
 const mapStateToProps = (state) => {
-    return state;
+    return {
+        translate: getTranslate(state.locale)
+    }
 }
   
 const mapDispatchToProps = (dispatch, ownProps) => {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { getTranslate,getActiveLanguage,setActiveLanguage } from 'react-localize-redux';
 import { Container,NavItem,NavLink,Collapse,NavbarBrand,Nav,NavbarToggler,Navbar } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import Avatar from 'material-ui/Avatar';
@@ -32,6 +33,16 @@ class Header extends Component {
         x.className = "topnav";
     }
   }
+
+  changeLang=()=>{
+    const { currentLanguage } = this.props;
+    if (currentLanguage==='en'){
+       this.props.changeLang('zh-CN')
+    }else {
+       this.props.changeLang('en')
+    }
+  }
+
   render() {
     const renderLogonComponent = () => {
       if (this.props.profile){
@@ -40,9 +51,9 @@ class Header extends Component {
                 <button className="dropbtn"><Avatar src={defaultProfilePhoto} /></button>
                 <div className="dropdown-content">
                   <Link to="/prototype/profile" className="profileLink">
-                    Profile
+                     { this.props.translate('profile') }
                   </Link>
-                  <a href="#" className="profileLink" onClick={this.logout.bind(this)}>Logout</a>
+                  <a href="#" className="profileLink" onClick={this.logout.bind(this)}>{ this.props.translate('logout') }</a>
                 </div>
             </div>
           )
@@ -54,21 +65,25 @@ class Header extends Component {
         <div className='container'>
           <div className="topnav" id="myTopnav">
                 <Link to="/prototype/" className='logo active' >
-                  MAVOTOKEN&nbsp;<span className="badge badge-pill badge-warning" style={{fontSize: '8px'}}>Prototype</span>
+                  MAVOIPX&nbsp;<span className="badge badge-pill badge-warning" style={{fontSize: '8px'}}>{ this.props.translate('prototype') }</span>
                 </Link>
                 
+                <Link to='#' onClick={()=> this.changeLang()} >
+                  { this.props.translate('language') }
+                </Link>
+
                 <Link to="/prototype/" >
-                    Home
+                    { this.props.translate('trade') }
                 </Link>
 
                 {this.props.profile?(
                   <Link to="/prototype/portfolio">
-                    Portfolio
+                    { this.props.translate('portfolio') }
                   </Link>
                 ):null}
 
                 <Link to="/prototype/news">
-                  News
+                  { this.props.translate('news') }
                 </Link>
 
                 <a href='https://github.com/magicmavostudio/mavotokenwebapp' target='_blank'>
@@ -77,12 +92,12 @@ class Header extends Component {
 
                 {!this.props.profile?(
                   <Link to="/prototype/register">
-                    Register
+                    { this.props.translate('signup') }
                   </Link>
                 ):null}
                 {!this.props.profile?(
                   <Link to="/prototype/login">
-                   Login
+                    { this.props.translate('login') }
                   </Link>
                 ):null}
                 
@@ -98,7 +113,10 @@ class Header extends Component {
 
 //export default Header;
 const mapStateToProps = (state) => {
-  return state;
+  return {
+    translate: getTranslate(state.locale),
+    currentLanguage: getActiveLanguage(state.locale).code
+  }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -106,6 +124,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       topnavUpdate: () => {
           dispatch(actions.topnavUpdate())
       },
+      changeLang: (langCode) => {
+        dispatch(setActiveLanguage(langCode))
+    }
   }
 }
 

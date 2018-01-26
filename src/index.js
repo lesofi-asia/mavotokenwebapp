@@ -23,10 +23,16 @@ import createStore from './redux/createStore';
 //Material UI
 import { MuiThemeProvider,createMuiTheme } from 'material-ui/styles';
 import {grey, amber, red} from 'material-ui/colors';
+import { initialize,addTranslation } from 'react-localize-redux';
 
 const theme = createMuiTheme();
 
 const store = createStore();
+//Localization
+const languages= ['en','zh-CN']
+store.dispatch(initialize(languages));
+const localizeData = require('./utils/localize.json');
+store.dispatch(addTranslation(localizeData))
 
 ReactDOM.render(
   <Provider store={store}>

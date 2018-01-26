@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { connect  } from 'react-redux';
+import { getTranslate } from 'react-localize-redux';
 import { Link } from 'react-router-dom';
 import EnhancedDataTable from '../../components/MaterialUi/DataTable/EnhancedDataTable';
 import Avatar from 'material-ui/Avatar';
@@ -116,7 +118,7 @@ const tableData = [
   }
 ];
 
-export default class IPsList extends Component {
+class IPsList extends Component {
     constructor(props, context){
       super(props, context);
 
@@ -182,19 +184,19 @@ export default class IPsList extends Component {
             <div className='row'>
                 <div className="d-flex flex-row">
                     <div className="p-2">
-                        <span style={{color: '#dbab83', fontWeight: 'bold'}}>No. of IP: </span>
+                        <span style={{color: '#dbab83', fontWeight: 'bold'}}>{ this.props.translate('noOfIP') }: </span>
                         <span style={{color: '#dbab83'}}>75</span>
                     </div>
                     <div className="p-2">
-                        <span style={{color: '#dbab83', fontWeight: 'bold'}}>Market: </span>
+                        <span style={{color: '#dbab83', fontWeight: 'bold'}}>{ this.props.translate('market') }: </span>
                         <span style={{color: '#dbab83'}}>345</span>
                     </div>
                     <div className="p-2">
-                        <span style={{color: '#dbab83', fontWeight: 'bold'}}>Market Cap: </span>
+                        <span style={{color: '#dbab83', fontWeight: 'bold'}}>{ this.props.translate('marketCap') }: </span>
                         <span style={{color: '#dbab83'}}>$1,235,809,896</span>
                     </div>
                     <div className="p-2">
-                        <span style={{color: '#dbab83', fontWeight: 'bold'}}>24h Volume: </span>
+                        <span style={{color: '#dbab83', fontWeight: 'bold'}}>{ this.props.translate('24hVolume') }: </span>
                         <span style={{color: '#dbab83'}}>$510,068</span>
                     </div>
                 </div>
@@ -222,4 +224,12 @@ export default class IPsList extends Component {
           </div>  
       );
     }
+}
+
+const mapStateToProps = (state) => {
+  return {
+      translate: getTranslate(state.locale)
   }
+}
+
+export default connect(mapStateToProps)(IPsList);

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect  } from 'react-redux';
+import { getTranslate } from 'react-localize-redux';
 
 const Footer=props=>{
   return (
@@ -7,51 +9,44 @@ const Footer=props=>{
           <div className="container">
             <div className="row">
                 <div className="col-sm-3">
-                  <h5>MAVOTOKEN</h5>
+                  <h5>MAVOIPX</h5>
                    <ul>
-                   <li>MAVOTOKEN is a Shariah-compliant peer-to-peer crowdfunding platform regulated by the Securities Commission of Malaysia</li>
+                   <li>{ props.translate('platformDesc') }</li>
                    </ul>
                 </div>
                 <div className="col-sm-2">
-                 <h5>Disclosure</h5>
+                 <h5>{ props.translate('disclosure') }</h5>
                   <ul>
-                      <li><a href="#">Risk Statement</a></li>
-                      <li><a href="#">Warning Statement</a></li>
-                      <li><a href="#">Disclosure Statement</a></li>
-                      <li><a href="#">Terms &amp; Conditions</a></li>
-                      <li><a href="#">Business Continuity Plan</a></li>
+                      <li><a href="#">{ props.translate('riskStatement') }</a></li>
+                      <li><a href="#">{ props.translate('warningStatement') }</a></li>
+                      <li><a href="#">{ props.translate('termsNCondition') }</a></li>
                   </ul>
                 </div>
                 <div className="col-sm-2">
-                  <h5>Policy</h5>
+                  <h5>{ props.translate('policy') }</h5>
                   <ul>
-                      <li><a href="#">Privacy Policy</a></li>
-                      <li><a href="#">Investor Agreement</a></li>
-                      <li><a href="#">Issuer Agreement</a></li>
-                      <li><a href="#">Refund Policy</a></li>
-                      <li><a href="#">Others</a></li>
+                      <li><a href="#">{ props.translate('privacyPolicy') }</a></li>
+                      <li><a href="#">{ props.translate('others') }</a></li>
                   </ul>
                 </div>
                 <div className="col-sm-2">
-                    <h5>Join the Crowd</h5>
+                    <h5>{ props.translate('joinUs') }</h5>
                     <ul>
-                       <li><Link to="/signup">Sign up</Link></li>
-                      <li><Link to="/signin">Login</Link></li>
+                       <li><Link to="/signup">{ props.translate('signup') }</Link></li>
+                      <li><Link to="/signin">{ props.translate('login') }</Link></li>
                     </ul>
                 </div>
                 <div className="col-sm-2">
-                  <h5>Contact</h5>
-                  <ul><li><a href="#">Contact</a></li>
-                      <li><a href="#">FAQ</a></li>
-                      <li><a href="#">Investor Fees &amp; Charges</a></li>
-                      <li><a href="#">Issuers Fees &amp; Charges</a></li>
-                      </ul>
+                  <h5>{ props.translate('contact') }</h5>
+                  <ul>
+                      <li><a href="#">{ props.translate('contact') }</a></li>
+                      <li><a href="#">{ props.translate('faq') }</a></li>
+                  </ul>
                 </div>
-               
             </div>
             <div className="row">
               <div className="footer-copyright">
-                <p>2018 © MAVOTOKEN</p>
+                <p>2018 © MAGIC IPX</p>
               </div>
             </div>  
         </div>
@@ -60,4 +55,9 @@ const Footer=props=>{
   )
 }
 
-export default Footer;
+const mapStateToProps = (state) => {
+  return {
+      translate: getTranslate(state.locale)
+  }
+}
+export default connect(mapStateToProps)(Footer);
