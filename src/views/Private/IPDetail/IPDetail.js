@@ -6,6 +6,7 @@ import Tabs, { Tab } from 'material-ui/Tabs';
 import Typography from 'material-ui/Typography';
 import IPBio from './IPBio';
 import IPMarket from './IPMarket';
+import MarketHistoryContainer from './MarketHistoryContainer';
 
 const TabContainer=props=>{
     return (
@@ -64,6 +65,12 @@ class IPDetail extends React.Component {
                         {value === 1 && <TabContainer><IPBio /></TabContainer>}
                     </div>
                 </div>
+                <div className='row'>
+                   <MarketHistoryContainer />     
+                </div>
+                <div classNames='row'>
+                   <br />
+                </div>        
             </div>    
         )
     }

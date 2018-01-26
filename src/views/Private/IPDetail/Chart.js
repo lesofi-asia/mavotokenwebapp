@@ -38,7 +38,7 @@ class CandleStickChartForContinuousIntraDay extends React.Component {
 			<ChartCanvas height={400}
 					ratio={ratio}
 					width={width}
-					margin={{ left: 40, right: 100, top: 10, bottom: 30 }}
+					margin={{ left: 40, right: 70, top: 10, bottom: 30 }}
 					type={type}
 					seriesName="MVT"
 					data={data}

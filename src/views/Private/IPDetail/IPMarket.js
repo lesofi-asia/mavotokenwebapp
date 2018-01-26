@@ -9,7 +9,8 @@ const isMobile=(width)=> width <=500;
 
 class IPMarket extends React.Component {
     state = {
-        data: null
+        data: null,
+        width: window.innerWidth
     };
 
     componentDidMount() {
@@ -43,18 +44,18 @@ class IPMarket extends React.Component {
         return (
             <div className='container'>
                 <div className='row'>
-                    <div className='col-sm-6'>
+                    <div className={isMobile(width)?'col-sm-6':'col-sm-7'}>
                       {renderChartComponent}
                     </div>
-                    <div className='col-sm-6'>
+                    <div className={isMobile(width)?'col-sm-6':'col-sm-5'}>
                         <SellTrans />
                     </div>
                 </div>
                 <div className='row'>
-                    <div className='col-sm-6'>
+                    <div className={isMobile(width)?'col-sm-6':'col-sm-7'}>
                        <Trade />
                     </div>
-                    <div className='col-sm-6'>
+                    <div className={isMobile(width)?'col-sm-6':'col-sm-5'}>
                        <BuyTrans />
                     </div>
                 </div>
